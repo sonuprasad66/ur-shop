@@ -1,107 +1,132 @@
-// import { Box, Button, Flex, Heading, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-// import React from "react";
-// import {Search2Icon} from "@chakra-ui/icons"
-// export const Navbar = () => {
-//   return (
-//     <>
-//       <Box bgColor={"#14244B"} color="white" h="80px">
-//         <Flex w="90%" m="auto" h="100%" alignItems={"center"} justifyContent={"space-between"}>
-//           <Box>
-//             <Heading>UR-SHOP</Heading>
-//           </Box>
-//           <Box>
-
-
 import React from "react";
 import {
   Box,
   Flex,
   Avatar,
-  HStack,
   Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  useColorModeValue,
   useColorMode,
-  Tooltip,
   Input,
   Heading,
   InputGroup,
   InputRightElement,
+  MenuGroup,
+  Text,
 } from "@chakra-ui/react";
-import { MoonIcon, Search2Icon, SunIcon } from "@chakra-ui/icons";
-import { Link as BrowseLink, useNavigate } from "react-router-dom";
-import {RiMoonClearLine} from "react-icons/ri";
-import{MdOutlineWbSunny} from "react-icons/md"
+import { Search2Icon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
+import { RiMoonClearLine } from "react-icons/ri";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { FiHeart } from "react-icons/fi";
+import { HiOutlineShoppingCart, HiOutlineUser } from "react-icons/hi";
+import { AiOutlinePoweroff } from "react-icons/ai";
+import { BsHandbag } from "react-icons/bs";
+import { FaUserCircle } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const token = false;
-
-//   #14244B  gray.100
+  const token = true;
+  const user = "Amol";
   return (
     <>
-      <Box bg={colorMode === 'light' ? '#14244B' : '#14244B'} color={"white"} px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"} w="90%" m="auto">
-          <HStack>
-            <Heading textAlign={"center"} w={"100%"} pl="80px">
-              <BrowseLink to={"/"}>BLOG</BrowseLink>
+      <Box bg={colorMode === "light" ? "#14244B" : "#14244B"} color={"white"}>
+        <Flex
+          h={16}
+          alignItems={"center"}
+          justifyContent={"space-around"}
+          w={["100%", "100%", "90%"]}
+          m="auto"
+        >
+          <Flex alignItems={"center"} justifyContent={"space-around"} gap={2}>
+            <Flex
+              pl={["2", "0", "0"]}
+              visibility={["visible", "visible", "visible", "hidden"]}
+            >
+              {" "}
+              <GiHamburgerMenu size={35} />
+            </Flex>
+            <Heading size={["md", "md", "md", "xl"]} >
+              <Link to={"/"}>UR SHOP</Link>
             </Heading>
-          </HStack>
-          <HStack spacing={8} alignItems={"center"} w="50%">
-            <InputGroup size="md">
-              <Input pr="4.5rem" type={"text"} placeholder="Search" />
+          </Flex>
+          <Flex w={["30%", "30%", "40%", "50%"]} visibility={["hidden", "visible", "visible", "visible"]}>
+            <InputGroup size="md" >
+              <Input
+                border={"2px solid white"}
+                pr="4.5rem"
+                type={"text"}
+                placeholder="Search"
+              />
               <InputRightElement width="4.5rem">
-                <Search2Icon />
+                <Search2Icon cursor={"pointer"} />
               </InputRightElement>
             </InputGroup>
-          </HStack>
-          {token ? (
-            <HStack alignItems={"center"}>{/* <PostBlog /> */}</HStack>
-          ) : (
-            ""
-          )}
-          <Flex alignItems={"center"} gap={{ sm: "10px", lg: "30px" }}>
+          </Flex>
+          <Flex alignItems={"center"} gap={{ sm: "20px", lg: "30px" }}>
             <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}
-              >
-                <Avatar
-                  size={"sm"}
-                  src={
-                    //     !token
-                    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                    //       : user.profile_pic
-                  }
-                />
-              </MenuButton>
               {token ? (
-                <MenuList>
-                  <MenuItem>My Profile</MenuItem>
-                  <MenuItem>My Blog</MenuItem>
-                  <MenuItem>Logout</MenuItem>
-                </MenuList>
+                <MenuButton>
+                  {" "}
+                  <Flex alignItems={"center"} color="white" gap={2}>
+                    <Avatar
+                      size={"sm"}
+                      src={
+                        "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                      }
+                    />
+                    <Text fontSize={"18px"}>{user}</Text>
+                  </Flex>
+                </MenuButton>
               ) : (
-                <MenuList>
-                  <BrowseLink to={"/signup"}>
-                    <MenuItem>Sign Up</MenuItem>
-                  </BrowseLink>
-                  <BrowseLink to={"/login"}>
-                    <MenuItem>Log In</MenuItem>
-                  </BrowseLink>
+                <Link to={"/login"}>
+                  <Flex alignItems={"center"} color="white">
+                    <HiOutlineUser size={25} />
+                    <Text fontSize={"18px"}>Login</Text>
+                  </Flex>
+                </Link>
+              )}
+
+              {token && (
+                <MenuList color={colorMode === "light" ? "black" : "white"}>
+            
+                  <MenuItem>
+                    <HiOutlineUser size={25} /> <Text ml={2}> My Account</Text>
+                  </MenuItem>
+                  <MenuItem>
+                    <BsHandbag size={25} />
+                    <Text ml={2}> My Orders</Text>
+                  </MenuItem>
+
+                  <MenuItem>
+                    <AiOutlinePoweroff size={25} />
+
+                    <Text ml={2}>Log Out</Text>
+                  </MenuItem>
+                 
                 </MenuList>
+               
               )}
             </Menu>
-           <Box>
-              
-                {colorMode === "light" ? <RiMoonClearLine cursor={"pointer"} size={25} onClick={toggleColorMode} /> : <MdOutlineWbSunny cursor={"pointer"} size={25} onClick={toggleColorMode}/>}
-                </Box>
-           
+            <FiHeart size={25} cursor="pointer" />
+            <HiOutlineShoppingCart size={25} cursor="pointer" />
+            <Box>
+              {colorMode === "light" ? (
+                <RiMoonClearLine
+                  cursor={"pointer"}
+                  size={25}
+                  onClick={toggleColorMode}
+                />
+              ) : (
+                <MdOutlineWbSunny
+                  cursor={"pointer"}
+                  size={25}
+                  onClick={toggleColorMode}
+                />
+              )}
+            </Box>
           </Flex>
         </Flex>
       </Box>
