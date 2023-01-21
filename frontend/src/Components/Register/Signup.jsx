@@ -127,6 +127,17 @@ export const Signup = () => {
                     onChange={handleChange}
                   />
                 </FormControl>
+
+                <FormControl isRequired>
+                  <FormLabel>Mobile Number</FormLabel>
+                  <Input
+                    type="number"
+                    name="mobile_number"
+                    placeholder="Enter Mobile Number"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+
                 <FormControl id="password" isRequired>
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
