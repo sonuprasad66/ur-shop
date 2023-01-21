@@ -6,12 +6,14 @@ app.use(cors());
 require("dotenv").config();
 const { connection } = require("./Config/db");
 const { userRouter } = require("./Routes/User.route");
+const { productsRouter } = require("./Routes/Products.route");
 
 app.get("/", (req, res) => {
   res.send("Welcome to MainRoutes");
 });
 
 app.use("/", userRouter);
+app.use("/", productsRouter);
 
 app.listen(process.env.PORT, async () => {
   try {

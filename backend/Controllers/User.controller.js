@@ -5,7 +5,7 @@ require("dotenv").config();
 const { userModel } = require("../Models/User.model");
 
 const userSignup = async (req, res) => {
-  const { name, profile_pic, email, password } = req.body;
+  const { name, profile_pic, email, mobile_number, password } = req.body;
   try {
     const user = await userModel.findOne({ email });
     if (user) {
@@ -22,6 +22,7 @@ const userSignup = async (req, res) => {
             name: name,
             profile_pic: profile_pic,
             email: email,
+            mobile_number: mobile_number,
             password: hash_password,
           });
           await new_user.save();

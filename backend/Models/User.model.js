@@ -5,7 +5,13 @@ const userSchema = new mongoose.Schema(
     name: { type: String, require: true },
     profile_pic: { type: String, require: true },
     email: { type: String, require: true },
+    mobile_number: { type: Number, require: true },
     password: { type: String, require: true },
+    role: {
+      type: String,
+      enum: ["customer", "seller", "admin"],
+      default: "customer",
+    },
   },
   {
     timestamps: true,
