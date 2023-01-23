@@ -1,0 +1,7 @@
+.sidebar_overflow::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar_container input {
+  margin: 15px;
+}

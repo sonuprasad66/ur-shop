@@ -16,7 +16,7 @@ export const ProductsCart = ({ products }) => {
           src={products.Image1}
           alt="Product_Image"
           w={"100%"}
-          h={"65%"}
+          h={"60%"}
           borderRadius={2}
           cursor={"pointer"}
         />
@@ -26,7 +26,9 @@ export const ProductsCart = ({ products }) => {
           <FiHeart fontSize={"20px"} cursor={"pointer"} />
         </Flex>
 
-        {/* <Text>{products.Product_Title}</Text> */}
+        <Text fontSize={"15px"}>
+          {products.Product_Title.slice(0, 20).trim() + " ..."}
+        </Text>
 
         <Flex alignItems={"center"} mt={1} gap={"20px"}>
           <Flex alignItems={"center"} gap={1}>
