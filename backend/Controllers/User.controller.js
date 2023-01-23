@@ -48,7 +48,11 @@ const userLogin = async (req, res) => {
       } else {
         if (result) {
           let token = jwt.sign({ user_id }, process.env.SECRET_KEY);
-          res.send({ message: "Login successful", token: token });
+          res.send({
+            message: "Login successful",
+            token: token,
+            role: user.role,
+          });
         } else {
           res.send({ message: "Login failed", status: "Failed" });
         }
