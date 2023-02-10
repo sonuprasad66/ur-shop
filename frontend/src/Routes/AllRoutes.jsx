@@ -1,9 +1,9 @@
 import React from "react";
+import { ProductsDetails } from "../Pages/ProductsDetails/ProductsDetails";
 import { Route, Routes } from "react-router";
 import { Home } from "../Components/Home";
 import { Login } from "../Components/Register/Login";
 import { Signup } from "../Components/Register/Signup";
-import { ProductsDetails } from "../Pages/ProductDetails/ProductsDetails";
 import { Products } from "../Pages/ProductsPage/Products";
 
 export const AllRoutes = () => {
