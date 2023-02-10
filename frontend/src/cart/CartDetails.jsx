@@ -4,7 +4,6 @@ import React from "react";
 const CartDetails = () => {
   return (
     <Box
-      w="20%"
       boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;"
       p="6"
       rounded="md"
