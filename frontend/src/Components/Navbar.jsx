@@ -11,7 +11,6 @@
 //           </Box>
 //           <Box>
 
-
 import React from "react";
 import {
   Box,
@@ -33,17 +32,27 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, Search2Icon, SunIcon } from "@chakra-ui/icons";
 import { Link as BrowseLink, useNavigate } from "react-router-dom";
-import {RiMoonClearLine} from "react-icons/ri";
-import{MdOutlineWbSunny} from "react-icons/md"
+import { RiMoonClearLine } from "react-icons/ri";
+import { MdOutlineWbSunny } from "react-icons/md";
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const token = false;
 
-//   #14244B  gray.100
+  //   #14244B  gray.100
   return (
     <>
-      <Box bg={colorMode === 'light' ? '#14244B' : '#14244B'} color={"white"} px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"} w="90%" m="auto">
+      <Box
+        bg={colorMode === "light" ? "#14244B" : "#14244B"}
+        color={"white"}
+        px={4}
+      >
+        <Flex
+          h={16}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          w="90%"
+          m="auto"
+        >
           <HStack>
             <Heading textAlign={"center"} w={"100%"} pl="80px">
               <BrowseLink to={"/"}>BLOG</BrowseLink>
@@ -97,11 +106,21 @@ export const Navbar = () => {
                 </MenuList>
               )}
             </Menu>
-           <Box>
-              
-                {colorMode === "light" ? <RiMoonClearLine cursor={"pointer"} size={25} onClick={toggleColorMode} /> : <MdOutlineWbSunny cursor={"pointer"} size={25} onClick={toggleColorMode}/>}
-                </Box>
-           
+            <Box>
+              {colorMode === "light" ? (
+                <RiMoonClearLine
+                  cursor={"pointer"}
+                  size={25}
+                  onClick={toggleColorMode}
+                />
+              ) : (
+                <MdOutlineWbSunny
+                  cursor={"pointer"}
+                  size={25}
+                  onClick={toggleColorMode}
+                />
+              )}
+            </Box>
           </Flex>
         </Flex>
       </Box>
