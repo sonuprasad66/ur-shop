@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.4.7",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@google-pay/button-react": "^3.0.5",
     "axios": "^1.2.2",
     "framer-motion": "^8.4.2",
     "install": "^0.13.0",

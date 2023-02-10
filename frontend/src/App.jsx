@@ -1,16 +1,15 @@
 import "./App.css";
-import { Navbar } from "./Components/Navbar";
 import { AllRoutes } from "./Routes/AllRoutes";
 import { Box } from "@chakra-ui/react";
-import { CheckoutPage } from "./Components/CheckoutPage";
+import { CheckoutPage } from "./Pages/CheckoutPage";
+import { Navbar } from "./Components/Navbar/Navbar";
 
 function App() {
   return (
     <>
       <Box className="font-face-pt">
         <Navbar />
-        {/* <AllRoutes /> */}
-        <CheckoutPage />
+        <AllRoutes />
       </Box>
     </>
   );
