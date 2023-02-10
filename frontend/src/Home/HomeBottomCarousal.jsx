@@ -5,16 +5,6 @@ import Carousel from "react-bootstrap/Carousel";
 const HomeBottomCarousal = () => {
   const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex, e) => {
-    if (index == 0) {
-      setIndex(index + 1);
-    }
-    if (index == 1) {
-      setIndex(index - 1);
-    }
-  };
-  console.log(index);
-
   return (
     <Box>
       <Carousel interval={3000} direction="right">
