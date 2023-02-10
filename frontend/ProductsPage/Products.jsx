@@ -2,7 +2,7 @@ import { Box, Button, Flex, Select, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../Redux/Products/action";
+import { getProducts } from "../src/Redux/Products/action";
 import { Filter } from "./Filter";
 import { Pagination } from "./Pagination";
 import { ProductsCart } from "./ProductsCart";
