@@ -6,8 +6,8 @@ import HomeTopCarousal from "../Home/HomeTopCarousal";
 const Home = () => {
   return (
     <Box>
-      {/* <HomeTopCarousal />
-      <HomeBottomCarousal /> */}
+      <HomeTopCarousal />
+      <HomeBottomCarousal />
     </Box>
   );
 };
