@@ -21,18 +21,18 @@ export const Filter = () => {
   const handleReset = () => {};
 
   const handlePrice = (e) => {
-    // const filterPrice = filterProducts.sort((a, b) => {
-    //   if (e === "LTH") {
-    //     if (a.Price > b.Price) return +1;
-    //     return -1;
-    //   } else if (e === "HTL") {
-    //     if (a.Price < b.Price) return +1;
-    //     return -1;
-    //   } else {
-    //     return 0;
-    //   }
-    // });
-    // console.log(filterPrice);
+    const filterPrice = filterProducts.sort((a, b) => {
+      if (e === "LTH") {
+        if (a.Price > b.Price) return +1;
+        return -1;
+      } else if (e === "HTL") {
+        if (a.Price < b.Price) return +1;
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+    console.log(filterPrice);
   };
 
   const handleDiscount = (e) => {
@@ -45,7 +45,11 @@ export const Filter = () => {
 
   return (
     <>
-      <Flex justifyContent={"space-between"} alignItems={"center"}>
+      <Flex
+        flexDirection={["column", "column", "row", "row"]}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
         <Box>
           <Button bg={"#14244b"} color={"white"} onClick={handleReset}>
             Reset All Filters
