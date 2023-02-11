@@ -1,14 +1,12 @@
 import React from "react";
+import { ProductsDetails } from "../Pages/ProductsDetails/ProductsDetails";
 import { Route, Routes } from "react-router";
 import { Products } from "../../ProductsPage/Products";
 import { Login } from "../Components/Register/Login";
 import { Signup } from "../Components/Register/Signup";
-<<<<<<< HEAD
 import Home from "../Pages/Home";
-=======
 import { ProductsDetails } from "../Pages/ProductDetails/ProductsDetails";
 import { Products } from "../Pages/ProductsPage/Products";
->>>>>>> 57ec1d0a4f5922bb3df0dce35541ee2eb8ee93ab
 
 export const AllRoutes = () => {
   return (

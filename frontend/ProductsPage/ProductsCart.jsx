@@ -3,8 +3,23 @@ import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { ImStarEmpty } from "react-icons/im";
 import { FaCartPlus } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { getProductsDetails } from "../../Redux/Products/action";
+import { useNavigate } from "react-router-dom";
 
 export const ProductsCart = ({ products }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleDetails = (id) => {
+    dispatch(getProductsDetails(id));
+    // .then((res) => console.log(res))
+    // .catch((err) => console.log(err));
+    navigate(`/products/${id}`);
+  };
+
+  const handleCart = (id) => {};
+
   return (
     <>
       <Box
@@ -19,6 +34,7 @@ export const ProductsCart = ({ products }) => {
           h={"60%"}
           borderRadius={2}
           cursor={"pointer"}
+          onClick={() => handleDetails(products._id)}
         />
 
         <Flex justifyContent={"space-between"} alignItems={"center"} mt={2}>
@@ -67,7 +83,7 @@ export const ProductsCart = ({ products }) => {
           p={2}
           borderRadius={1}
         >
-          <Text>Add To Cart</Text>
+          <Text onClick={() => handleCart(products._id)}>Add To Cart</Text>
         </Box>
       </Box>
     </>

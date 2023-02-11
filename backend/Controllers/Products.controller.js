@@ -5,6 +5,12 @@ const getAllProducts = async (req, res) => {
   res.send(data);
 };
 
+const getAllProductsDetails = async (req, res) => {
+  const { id } = req.params;
+  let data = await ProductsModel.findOne({ _id: id });
+  res.send(data);
+};
+
 const getAllFilterProducts = async (req, res) => {
   const { brand, category } = req.query;
   let data;
@@ -31,4 +37,5 @@ const getAllFilterProducts = async (req, res) => {
 module.exports = {
   getAllProducts,
   getAllFilterProducts,
+  getAllProductsDetails,
 };

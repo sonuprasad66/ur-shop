@@ -32,3 +32,24 @@ export const getFilterProducts = (params) => (dispatch) => {
       });
     });
 };
+
+// ----------------------- Products Details --------------------------
+
+export const getProductsDetails = (params) => (dispatch) => {
+  dispatch({ type: types.GET_PRODUCTS_DETAILS_REQUEST });
+  return axios
+    .get(`http://localhost:8080/getAllProductsDetails/${params}`)
+    .then((res) => {
+      // console.log(res.data);
+      return dispatch({
+        type: types.GET_PRODUCTS_DETAILS_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      return dispatch({
+        type: types.GET_PRODUCTS_DETAILS_FAILURE,
+        payload: err,
+      });
+    });
+};
