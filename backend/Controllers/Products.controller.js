@@ -7,6 +7,7 @@ const getAllProducts = async (req, res) => {
 
 const getAllProductsDetails = async (req, res) => {
   const { id } = req.params;
+  // console.log(id)
   let data = await ProductsModel.findOne({ _id: id });
   res.send(data);
 };

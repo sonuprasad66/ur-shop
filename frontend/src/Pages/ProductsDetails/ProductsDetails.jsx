@@ -28,7 +28,7 @@ export const ProductsDetails = () => {
   }, []);
 
   const handleWishlist = (id) => {
-    console.log(id);
+    // console.log(id);
   };
 
   const handleCart = (id) => {};
