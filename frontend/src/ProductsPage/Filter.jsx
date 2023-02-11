@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Select } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilterProducts, getProducts } from "../../Redux/Products/action";
+import { getFilterProducts, getProducts } from "../Redux/Products/action";
 
 export const Filter = () => {
   const dispatch = useDispatch();

@@ -1,27 +1,34 @@
 import { Box } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const HomeBottomCarousal = () => {
-  const [index, setIndex] = useState(0);
-
   return (
     <Box>
-      <Carousel interval={3000} direction="right">
-        <Carousel.Item>
+      <Carousel
+        showThumbs={false}
+        autoPlay={true}
+        transitionTime={2}
+        infiniteLoop={true}
+        showStatus={false}
+        showArrows={false}
+      >
+        <div>
+          {" "}
           <img
             className="d-block w-100"
             src="https://www.jiomart.com/images/cms/aw_rbslider/slides/1675947202_Mumbai.jpg"
             alt="Second slide"
           />
-        </Carousel.Item>
-        <Carousel.Item>
+        </div>
+        <div>
           <img
             className="d-block w-100"
             src="https://www.jiomart.com/images/cms/aw_rbslider/slides/1675919530_Web_Mumbai_PremiumFruits.jpg"
             alt="First slide"
           />
-        </Carousel.Item>
+        </div>
       </Carousel>
     </Box>
   );
