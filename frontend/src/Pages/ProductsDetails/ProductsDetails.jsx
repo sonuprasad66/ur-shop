@@ -27,7 +27,9 @@ export const ProductsDetails = () => {
     dispatch(getProductsDetails(id));
   }, []);
 
-  const handleWishlist = (id) => {};
+  const handleWishlist = (id) => {
+    console.log(id);
+  };
 
   const handleCart = (id) => {};
 
