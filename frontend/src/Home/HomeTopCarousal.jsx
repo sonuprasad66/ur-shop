@@ -1,11 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 
 const HomeTopCarousal = () => {
   return (
     <Box>
-      <Carousel interval={3000}>
+      {/* <Carousel interval={3000}>
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -62,7 +62,7 @@ const HomeTopCarousal = () => {
             alt="Third slide"
           />
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
     </Box>
   );
 };
