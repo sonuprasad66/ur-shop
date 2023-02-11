@@ -7,11 +7,11 @@ html {
 }
 
 body::-webkit-scrollbar {
-  width: 7px;
+  width: 0px;
 }
 
 body::-webkit-scrollbar-track {
-  background-color: whitesmoke;
+  background-color:transparent;
 }
 
 body::-webkit-scrollbar-thumb {

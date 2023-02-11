@@ -7,6 +7,9 @@ require("dotenv").config();
 const { connection } = require("./Config/db");
 const { userRouter } = require("./Routes/User.route");
 const { productsRouter } = require("./Routes/Products.route");
+const { cartRouter } = require("./Routes/Cart.route");
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
 
 app.get("/", (req, res) => {
   res.send("Welcome to MainRoutes");
@@ -14,6 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/", userRouter);
 app.use("/", productsRouter);
+app.use("/", cartRouter);
 
 app.listen(process.env.PORT, async () => {
   try {

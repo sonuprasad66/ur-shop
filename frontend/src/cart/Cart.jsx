@@ -6,7 +6,7 @@ import CartDetails from "./CartDetails";
 const Cart = () => {
   return (
     <Box w={"90%"} m="auto">
-      <Flex justify={"space-between"}>
+      <Box display={["block","flex"]} justify={"space-between"}>
         <Box>
           {Array(3)
             .fill(0)
@@ -18,7 +18,7 @@ const Cart = () => {
           {" "}
           <CartDetails />
         </Box>
-      </Flex>
+      </Box>
     </Box>
   );
 };

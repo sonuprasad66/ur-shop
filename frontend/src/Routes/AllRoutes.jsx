@@ -3,9 +3,9 @@ import Cart from "../cart/Cart";
 import { Route, Routes } from "react-router";
 import { Login } from "../Components/Register/Login";
 import { Signup } from "../Components/Register/Signup";
+import Home from "../Pages/Home";
 import { Products } from "../Pages/ProductsPage/Products";
 import { ProductsDetails } from "../Pages/ProductsDetails/ProductsDetails";
-import { Home } from "../Pages/HomePage/Home";
 
 export const AllRoutes = () => {
   return (
