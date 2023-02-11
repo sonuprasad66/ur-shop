@@ -2,12 +2,8 @@ import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD:frontend/ProductsPage/Products.jsx
-import { getProducts } from "../src/Redux/Products/action";
-=======
 import { useLocation, useSearchParams } from "react-router-dom";
 import { getFilterProducts, getProducts } from "../../Redux/Products/action";
->>>>>>> 57ec1d0a4f5922bb3df0dce35541ee2eb8ee93ab:frontend/src/Pages/ProductsPage/Products.jsx
 import { Filter } from "./Filter";
 import { Pagination } from "./Pagination";
 import { ProductsCart } from "./ProductsCart";

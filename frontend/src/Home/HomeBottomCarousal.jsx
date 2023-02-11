@@ -1,13 +1,13 @@
 import { Box } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 
 const HomeBottomCarousal = () => {
   const [index, setIndex] = useState(0);
 
   return (
     <Box>
-      <Carousel interval={3000} direction="right">
+      {/* <Carousel interval={3000} direction="right">
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -22,7 +22,7 @@ const HomeBottomCarousal = () => {
             alt="First slide"
           />
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
     </Box>
   );
 };

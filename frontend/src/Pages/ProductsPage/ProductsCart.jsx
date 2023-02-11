@@ -13,8 +13,6 @@ export const ProductsCart = ({ products }) => {
 
   const handleDetails = (id) => {
     dispatch(getProductsDetails(id));
-    // .then((res) => console.log(res))
-    // .catch((err) => console.log(err));
     navigate(`/products/${id}`);
   };
 
