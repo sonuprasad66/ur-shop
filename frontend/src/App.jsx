@@ -10,7 +10,6 @@ function App() {
       <Box className="font-face-pt">
         <Navbar />
         <AllRoutes />
-        {/* <Cart /> */}
       </Box>
     </>
   );
