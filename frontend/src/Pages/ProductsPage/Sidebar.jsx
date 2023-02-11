@@ -2,11 +2,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<<< HEAD:frontend/src/ProductsPage/Sidebar.jsx
-import { getProducts } from "../Redux/Products/action";
-========
 import { getProducts } from "../../Redux/Products/action";
->>>>>>>> 18a618c1fcea61ea5f51620c034d69b20386071a:frontend/src/Pages/ProductsPage/Sidebar.jsx
 
 export const Sidebar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
