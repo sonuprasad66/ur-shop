@@ -86,7 +86,7 @@ export const Login = () => {
           >
             <Stack spacing={4}>
               <form onSubmit={handleSubmit}>
-                <FormControl id="email">
+                <FormControl id="email" isRequired>
                   <FormLabel>Email address</FormLabel>
                   <Input
                     type="email"
@@ -95,7 +95,7 @@ export const Login = () => {
                     onChange={handleChange}
                   />
                 </FormControl>
-                <FormControl id="password">
+                <FormControl id="password" isRequired>
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
                     <Input
@@ -151,6 +151,14 @@ export const Login = () => {
                       "LOG IN"
                     )}
                   </Button>
+                </Stack>
+                <Stack pt={6}>
+                  <Text align={"center"}>
+                    I don`t have account?{" "}
+                    <Link color={"blue.400"}>
+                      <BrowseLink to={"/signup"}>Sign Up</BrowseLink>
+                    </Link>
+                  </Text>
                 </Stack>
               </form>
             </Stack>

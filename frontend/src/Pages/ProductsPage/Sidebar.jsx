@@ -12,12 +12,13 @@ export const Sidebar = () => {
   const initialCategory = searchParams.getAll("category");
   const [category, setCategory] = useState(initialCategory || []);
 
+  const initialPrice = searchParams.getAll("price");
+  const [price, setPrice] = useState([]);
+
+  const [discount, setDiscount] = useState([]);
+
   const [uniqueBrand, setUniqueBrand] = useState([]);
   const [uniqueCategory, setUniqueCategory] = useState([]);
-  const [minPrice, setMinPrice] = useState([]);
-  const [maxPrice, setMaxPrice] = useState([]);
-  const [minDiscount, setMinDiscount] = useState([]);
-  const [maxDiscount, setMaxDiscount] = useState([]);
 
   const dispatch = useDispatch();
   const products = useSelector((state) => state.ProductsReducer.products);
@@ -71,14 +72,26 @@ export const Sidebar = () => {
     setCategory(newCategory);
   };
 
+  const handleFilterPrice = (e) => {
+    const newCategory = [...price];
+    if (newCategory.includes(e.target.value)) {
+      newCategory.splice(newCategory.indexOf(e.target.value), 1);
+    } else {
+      newCategory.push(e.target.value);
+    }
+    setPrice(newCategory);
+  };
+
   useEffect(() => {
-    if (brand || category) {
+    if (brand || category || price) {
       let params = {};
       brand && (params.brand = brand);
       category && (params.category = category);
+      price && (params.price = price);
+
       setSearchParams(params);
     }
-  }, [brand, category, setSearchParams]);
+  }, [brand, category, price, setSearchParams]);
 
   return (
     <>
@@ -126,43 +139,36 @@ export const Sidebar = () => {
           <Box>
             <input
               type="checkbox"
-              value="0"
-              onChange={(e) => {
-                setMinPrice(e.target.value);
-                setMaxPrice(500);
-              }}
+              value="500"
+              checked={price.includes("500")}
+              onChange={handleFilterPrice}
             />
             <label style={{ marginLeft: "5px" }}>₹0 - ₹500</label>
           </Box>
           <Box>
             <input
               type="checkbox"
-              value="551"
-              onChange={(e) => {
-                setMinPrice(e.target.value);
-                setMaxPrice(1000);
-              }}
+              value="1000"
+              checked={price.includes("1000")}
+              onChange={handleFilterPrice}
             />
             <label style={{ marginLeft: "5px" }}>₹551 - ₹1000</label>
           </Box>
           <Box>
             <input
               type="checkbox"
-              value="1001"
-              onChange={(e) => {
-                setMinPrice(e.target.value);
-                setMaxPrice(2500);
-              }}
+              value="2500"
+              checked={price.includes("2500")}
+              onChange={handleFilterPrice}
             />
             <label style={{ marginLeft: "5px" }}>₹1001 - ₹2500</label>
           </Box>
           <Box>
             <input
               type="checkbox"
-              value="2500"
-              onChange={(e) => {
-                setMinPrice(e.target.value);
-              }}
+              value="2501"
+              checked={price.includes("2501")}
+              onChange={handleFilterPrice}
             />
             <label style={{ marginLeft: "5px" }}>Above ₹2500</label>
           </Box>

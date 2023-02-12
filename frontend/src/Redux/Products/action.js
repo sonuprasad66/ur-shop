@@ -53,3 +53,62 @@ export const getProductsDetails = (params) => (dispatch) => {
       });
     });
 };
+
+// ----------------------- sort by price --------------------------
+
+export const getAllDataSortByPrice = (params) => (dispatch) => {
+  dispatch({ type: types.SORTED_BY_PRICE_REQUEST });
+  return axios
+    .get(`http://localhost:8080/getAllProductsSortByPrice?order=${params}`)
+    .then((res) => {
+      // console.log(res.data);
+      return dispatch({
+        type: types.SORTED_BY_PRICE_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      return dispatch({
+        type: types.SORTED_BY_PRICE_FAILURE,
+        payload: err,
+      });
+    });
+};
+
+export const getAllDataSortByDiscount = (params) => (dispatch) => {
+  dispatch({ type: types.SORTED_BY_DISCOUNT_REQUEST });
+  return axios
+    .get(`http://localhost:8080/getAllProductsSortByDiscount?order=${params}`)
+    .then((res) => {
+      // console.log(res.data);
+      return dispatch({
+        type: types.SORTED_BY_DISCOUNT_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      return dispatch({
+        type: types.SORTED_BY_DISCOUNT_FAILURE,
+        payload: err,
+      });
+    });
+};
+
+export const getAllDataSortByRating = (params) => (dispatch) => {
+  dispatch({ type: types.SORTED_BY_RATING_REQUEST });
+  return axios
+    .get(`http://localhost:8080/getAllProductsSortByRating?order=${params}`)
+    .then((res) => {
+      // console.log(res.data);
+      return dispatch({
+        type: types.SORTED_BY_RATING_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      return dispatch({
+        type: types.SORTED_BY_RATING_FAILURE,
+        payload: err,
+      });
+    });
+};

@@ -53,10 +53,15 @@ export const ProductsDetails = () => {
 
   return (
     <>
-      <Flex w={"100%"} h={"100vh"} m={"10px auto"} p={5}>
-        <Flex w={"50%"} h={"100%"}>
-          <Box w={"30%"} h={"100%"} p={2} display={"inline-block"}>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} m={3}>
+      <Flex
+        flexDirection={["column", "column", "column", "row"]}
+        h={"100vh"}
+        m={"10px auto"}
+        p={5}
+      >
+        <Flex w={["column", "column", "column", "60%"]} h={"100%"}>
+          <Box w={"30%"} p={2}>
+            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -65,7 +70,7 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} m={3}>
+            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -74,7 +79,7 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} m={3}>
+            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -83,7 +88,7 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} m={3}>
+            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -103,7 +108,7 @@ export const ProductsDetails = () => {
           </Box>
         </Flex>
 
-        <Box w={"50%"} h={"100%"} p={5}>
+        <Box w={["100%", "100%", "100%", "50%"]} h={"100%"} p={5}>
           <Heading fontSize={"25px"}>{product.Product_Title}</Heading>
 
           <Flex gap={"20px"} alignItems={"center"} mt={2}>
@@ -144,7 +149,7 @@ export const ProductsDetails = () => {
           </Heading>
           <Flex gap={"20px"} alignItems={"center"} mt={2}>
             <Text>Inaugural Offer</Text>
-            <Heading fontSize={"30px"}>Free Shopping</Heading>
+            <Heading fontSize={"25px"}>Free Shopping</Heading>
           </Flex>
 
           <Flex alignItems={"center"} gap={4} mt={2}>
