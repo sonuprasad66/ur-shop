@@ -3,11 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
-<<<<<<<< HEAD:frontend/src/ProductsPage/Products.jsx
-import {getFilterProducts, getProducts } from "../Redux/Products/action";
-========
 import { getFilterProducts, getProducts } from "../../Redux/Products/action";
->>>>>>>> 18a618c1fcea61ea5f51620c034d69b20386071a:frontend/src/Pages/ProductsPage/Products.jsx
 import { Filter } from "./Filter";
 import { Pagination } from "./Pagination";
 import { ProductsCart } from "./ProductsCart";
