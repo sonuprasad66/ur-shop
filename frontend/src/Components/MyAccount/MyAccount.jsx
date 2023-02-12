@@ -1,5 +1,10 @@
 import React from "react";
+import { Box } from "@chakra-ui/react";
 
 export const MyAccount = () => {
-  return <div>MyAccount Data Comming Soon</div>;
+  return (
+    <>
+      <Box>MyAccount Comming Soon</Box>
+    </>
+  );
 };
