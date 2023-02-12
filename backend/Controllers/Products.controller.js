@@ -32,7 +32,7 @@ const getAllProductsDetails = async (req, res) => {
 // ---------------------All Filter Part--------------------------------
 
 const getAllFilterProducts = async (req, res) => {
-  const { brand, category } = req.query;
+  const { brand, category, price } = req.query;
   let data;
 
   if (brand && category) {
@@ -48,6 +48,11 @@ const getAllFilterProducts = async (req, res) => {
     data = await ProductsModel.find({
       category: { $in: [...category] },
     });
+  } else if (price) {
+    let new_price = Number(price[0]);
+    // console.log(typeof new_price);
+    data = await ProductsModel.find({ Price: { $lte: new_price } });
+    // data = await ProductsModel.find();
   } else {
     data = await ProductsModel.find();
   }
