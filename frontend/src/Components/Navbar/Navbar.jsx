@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Flex,
@@ -24,7 +24,7 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiMoonClearLine } from "react-icons/ri";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { FiHeart } from "react-icons/fi";
@@ -34,11 +34,23 @@ import { BsHandbag } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { SubNavbar } from "./SubNavbar";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfile } from "../../Redux/Auth/action";
 export const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const token = true;
-  const user = "Amol";
+  const token = localStorage.getItem("token");
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+  const currentUser = useSelector((state) => state.AuthReducer.currentUser);
+  useEffect(() => {
+    dispatch(getProfile());
+  }, [dispatch]);
+
   const closeButton = () => {
     onclose();
   };
@@ -114,7 +126,7 @@ export const Navbar = () => {
                       visibility={["hidden", "visible", "visible", "visible"]}
                       fontSize={"18px"}
                     >
-                      {user}
+                      {currentUser.name}
                     </Text>
                   </Flex>
                 </MenuButton>
@@ -130,7 +142,7 @@ export const Navbar = () => {
               {token && (
                 <MenuList color={colorMode === "light" ? "black" : "white"}>
                   <MenuGroup
-                    title={user}
+                    title={currentUser.name}
                     display={["flex", "none", "none", "none"]}
                     visibility={["visible", "hidden", "hidden", "hidden"]}
                   ></MenuGroup>
@@ -144,8 +156,9 @@ export const Navbar = () => {
 
                   <MenuItem>
                     <AiOutlinePoweroff size={25} />
-
-                    <Text ml={2}>Log Out</Text>
+                    <Text ml={2} onClick={handleLogout}>
+                      Log Out
+                    </Text>
                   </MenuItem>
                 </MenuList>
               )}
@@ -199,6 +212,11 @@ export const Navbar = () => {
               justifyContent={"space-around"}
               m={"auto"}
             >
+              <Link to={"/products"}>
+                <Text onClick={onClose} fontWeight={"bold"} fontSize={"20px"}>
+                  Products
+                </Text>
+              </Link>
               <Link to={"/"}>
                 <Text onClick={onClose} fontWeight={"bold"} fontSize={"20px"}>
                   Men
@@ -212,6 +230,11 @@ export const Navbar = () => {
               <Link to={"/"}>
                 <Text onClick={onClose} fontWeight={"bold"} fontSize={"20px"}>
                   Electronics
+                </Text>
+              </Link>
+              <Link to={"/"}>
+                <Text onClick={onClose} fontWeight={"bold"} fontSize={"20px"}>
+                  About Us
                 </Text>
               </Link>
             </Flex>
