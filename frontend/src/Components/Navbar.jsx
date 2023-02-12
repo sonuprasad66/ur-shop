@@ -1,16 +1,3 @@
-// import { Box, Button, Flex, Heading, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-// import React from "react";
-// import {Search2Icon} from "@chakra-ui/icons"
-// export const Navbar = () => {
-//   return (
-//     <>
-//       <Box bgColor={"#14244B"} color="white" h="80px">
-//         <Flex w="90%" m="auto" h="100%" alignItems={"center"} justifyContent={"space-between"}>
-//           <Box>
-//             <Heading>UR-SHOP</Heading>
-//           </Box>
-//           <Box>
-
 import React from "react";
 import {
   Box,

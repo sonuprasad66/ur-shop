@@ -50,7 +50,6 @@ const getAllFilterProducts = async (req, res) => {
     });
   } else if (price) {
     let new_price = Number(price[0]);
-    // console.log(typeof new_price);
     data = await ProductsModel.find({ Price: { $lte: new_price } });
     // data = await ProductsModel.find();
   } else {
