@@ -61,7 +61,6 @@ export const getAllDataSortByPrice = (params) => (dispatch) => {
   return axios
     .get(`http://localhost:8080/getAllProductsSortByPrice?order=${params}`)
     .then((res) => {
-      // console.log(res.data);
       return dispatch({
         type: types.SORTED_BY_PRICE_SUCCESS,
         payload: res.data,
