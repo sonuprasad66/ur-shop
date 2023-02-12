@@ -12,6 +12,9 @@ export const SubNavbar = () => {
         justifyContent={"space-around"}
         m={"auto"}
       >
+        <Link to={"/products"}>
+          <Text fontSize={"20px"}>Products</Text>
+        </Link>
         <Link to={"/"}>
           <Text fontSize={"20px"}>Men</Text>
         </Link>
@@ -20,6 +23,9 @@ export const SubNavbar = () => {
         </Link>
         <Link to={"/"}>
           <Text fontSize={"20px"}>Electronics</Text>
+        </Link>
+        <Link to={"/"}>
+          <Text fontSize={"20px"}>About US</Text>
         </Link>
       </Flex>
     </Box>

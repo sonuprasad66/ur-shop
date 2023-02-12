@@ -150,8 +150,13 @@ export const Navbar = () => {
                 </MenuList>
               )}
             </Menu>
-            <FiHeart size={25} cursor="pointer" />
-            <HiOutlineShoppingCart size={25} cursor="pointer" />
+            <Link to="/wishlist">
+              <FiHeart size={25} cursor="pointer" />
+            </Link>
+            <Link to="/cart">
+              <HiOutlineShoppingCart size={25} cursor="pointer" />
+            </Link>
+
             <Box>
               {colorMode === "light" ? (
                 <RiMoonClearLine
@@ -170,12 +175,14 @@ export const Navbar = () => {
           </Flex>
         </Flex>
       </Box>
+
       <Box
         display={["none", "none", "none", "flex"]}
         visibility={["hidden", "visible", "visible", "visible"]}
       >
         <SubNavbar />
       </Box>
+
       <Drawer size={"lg"} placement={"left"} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
