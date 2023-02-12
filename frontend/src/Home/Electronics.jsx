@@ -21,7 +21,7 @@ const Electronics = () => {
       {" "}
       <Text m={"1.5%"} fontSize={"20px"} fontWeight="bold" mb={"0"}>
         {" "}
-        Electronicss - Top Picks
+        Electronics - Top Picks
       </Text>
       <SimpleGrid columns={[1, 2, 3, 5]} spacing="30px" p={5}>
         {data?.map((item) => (

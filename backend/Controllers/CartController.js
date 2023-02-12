@@ -5,6 +5,7 @@ const User = require("../Models/User.model");
 const app = express.Router();
 
 const getCartData = async (req, res) => {
+  console.log(req.user_id);
   try {
     let items = await Cart.find({
       user: req.userId,
@@ -75,8 +76,6 @@ const updateCartProduct = async (req, res) => {
     res.status(500).send(er.message);
   }
 };
-
-
 
 module.exports = {
   getCartData,
