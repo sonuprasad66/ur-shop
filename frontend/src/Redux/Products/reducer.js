@@ -53,6 +53,48 @@ export const reducer = (state = initialState, action) => {
     case types.GET_PRODUCTS_DETAILS_FAILURE:
       return { ...state, isLoading: false, isError: true, productsDetails: {} };
 
+    case types.SORTED_BY_PRICE_REQUEST:
+      return { ...state, isLoading: true };
+
+    case types.SORTED_BY_PRICE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        filterProducts: payload,
+      };
+
+    case types.SORTED_BY_PRICE_FAILURE:
+      return { ...state, isLoading: false, isError: true, filterProducts: [] };
+
+    case types.SORTED_BY_DISCOUNT_REQUEST:
+      return { ...state, isLoading: true };
+
+    case types.SORTED_BY_DISCOUNT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        filterProducts: payload,
+      };
+
+    case types.SORTED_BY_DISCOUNT_FAILURE:
+      return { ...state, isLoading: false, isError: true, filterProducts: [] };
+
+    case types.SORTED_BY_RATING_REQUEST:
+      return { ...state, isLoading: true };
+
+    case types.SORTED_BY_RATING_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        filterProducts: payload,
+      };
+
+    case types.SORTED_BY_RATING_FAILURE:
+      return { ...state, isLoading: false, isError: true, filterProducts: [] };
+
     default:
       return state;
   }

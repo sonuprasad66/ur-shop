@@ -1,10 +1,17 @@
-import { Box, Button, Flex, Select } from "@chakra-ui/react";
+import { Box, Button, Flex, Select, useToast } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilterProducts, getProducts } from "../../Redux/Products/action";
+import {
+  getAllDataSortByDiscount,
+  getAllDataSortByPrice,
+  getAllDataSortByRating,
+  getFilterProducts,
+  getProducts,
+} from "../../Redux/Products/action";
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const toast = useToast();
   const products = useSelector((state) => state.ProductsReducer.products);
   const filterProducts = useSelector(
     (state) => state.ProductsReducer.filterProducts
@@ -18,29 +25,93 @@ export const Filter = () => {
     dispatch(getFilterProducts());
   }, []);
 
-  const handleReset = () => {};
+  const handleReset = () => {
+    dispatch(getFilterProducts())
+      .then((res) => {
+        toast({
+          title: "Products Filter Reset Success",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: "Products Filter Reset Failed",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      });
+  };
 
   const handlePrice = (e) => {
-    const filterPrice = filterProducts.sort((a, b) => {
-      if (e === "LTH") {
-        if (a.Price > b.Price) return +1;
-        return -1;
-      } else if (e === "HTL") {
-        if (a.Price < b.Price) return +1;
-        return -1;
-      } else {
-        return 0;
-      }
-    });
-    console.log(filterPrice);
+    dispatch(getAllDataSortByPrice(e))
+      .then((res) => {
+        toast({
+          title: "Products Sorted By Price",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: "Products Sorted Failed",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      });
   };
 
   const handleDiscount = (e) => {
-    console.log(e);
+    dispatch(getAllDataSortByDiscount(e))
+      .then((res) => {
+        toast({
+          title: "Products Sorted By Discount",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: "Products Sorted Failed",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      });
   };
 
   const handleRating = (e) => {
-    console.log(e);
+    dispatch(getAllDataSortByRating(e))
+      .then((res) => {
+        console.log(res);
+        toast({
+          title: "Products Sorted By Rating",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: "Products Sorted Failed",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      });
   };
 
   return (
@@ -60,8 +131,8 @@ export const Filter = () => {
             placeholder="Sort By Price"
             onChange={(e) => handlePrice(e.target.value)}
           >
-            <option value="LTH">LOW TO HIGH</option>
-            <option value="HTL">HIGH TO LOW</option>
+            <option value="asc">LOW TO HIGH</option>
+            <option value="desc">HIGH TO LOW</option>
           </Select>
         </Box>
         <Box>
@@ -69,8 +140,8 @@ export const Filter = () => {
             placeholder="Sort By Discount"
             onChange={(e) => handleDiscount(e.target.value)}
           >
-            <option value="LTH">LOW TO HIGH</option>
-            <option value="HTL">HIGH TO LOW</option>
+            <option value="asc">LOW TO HIGH</option>
+            <option value="desc">HIGH TO LOW</option>
           </Select>
         </Box>
         <Box>
@@ -78,8 +149,8 @@ export const Filter = () => {
             placeholder="Sort By Rating"
             onChange={(e) => handleRating(e.target.value)}
           >
-            <option value="LTH">LOW TO HIGH</option>
-            <option value="HTL">HIGH TO LOW</option>
+            <option value="asc">LOW TO HIGH</option>
+            <option value="desc">HIGH TO LOW</option>
           </Select>
         </Box>
       </Flex>

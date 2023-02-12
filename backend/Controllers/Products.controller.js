@@ -5,12 +5,31 @@ const getAllProducts = async (req, res) => {
   res.send(data);
 };
 
+const getAllProductsMens = async (req, res) => {
+  let data = await ProductsModel.find({ category: "Mens" });
+  res.send(data);
+};
+const getAllProductsWomens = async (req, res) => {
+  let data = await ProductsModel.find({ category: "Women" });
+  res.send(data);
+};
+const getAllProductsKids = async (req, res) => {
+  let data = await ProductsModel.find({ category: "kids" });
+  res.send(data);
+};
+const getAllProductsElectronics = async (req, res) => {
+  let data = await ProductsModel.find({ category: "Electronics" });
+  res.send(data);
+};
+
 const getAllProductsDetails = async (req, res) => {
   const { id } = req.params;
   // console.log(id)
   let data = await ProductsModel.findOne({ _id: id });
   res.send(data);
 };
+
+// ---------------------All Filter Part--------------------------------
 
 const getAllFilterProducts = async (req, res) => {
   const { brand, category } = req.query;
@@ -35,20 +54,27 @@ const getAllFilterProducts = async (req, res) => {
   res.send(data);
 };
 
-const getAllProductsMens = async (req, res) => {
-  let data = await ProductsModel.find({ category: "Mens" });
+const getAllDataSortByPrice = async (req, res) => {
+  const { order } = req.query;
+  let data = await ProductsModel.find().sort({
+    Price: order == "asc" ? 1 : -1,
+  });
   res.send(data);
 };
-const getAllProductsWomens = async (req, res) => {
-  let data = await ProductsModel.find({ category: "Women" });
+
+const getAllDataSortByDiscount = async (req, res) => {
+  const { order } = req.query;
+  let data = await ProductsModel.find().sort({
+    Discount: order == "asc" ? 1 : -1,
+  });
   res.send(data);
 };
-const getAllProductsKids = async (req, res) => {
-  let data = await ProductsModel.find({ category: "kids" });
-  res.send(data);
-};
-const getAllProductsElectronics = async (req, res) => {
-  let data = await ProductsModel.find({ category: "Electronics" });
+
+const getAllDataSortByRating = async (req, res) => {
+  const { order } = req.query;
+  let data = await ProductsModel.find().sort({
+    Rating: order == "asc" ? 1 : -1,
+  });
   res.send(data);
 };
 
@@ -60,4 +86,7 @@ module.exports = {
   getAllProductsWomens,
   getAllProductsKids,
   getAllProductsElectronics,
+  getAllDataSortByPrice,
+  getAllDataSortByDiscount,
+  getAllDataSortByRating,
 };
