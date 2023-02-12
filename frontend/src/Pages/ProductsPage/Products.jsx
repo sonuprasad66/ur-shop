@@ -33,6 +33,7 @@ export const Products = () => {
         params: {
           brand: searchParams.getAll("brand"),
           category: searchParams.getAll("category"),
+          price: searchParams.getAll("price"),
         },
       };
       // console.log(getProductsParams);
