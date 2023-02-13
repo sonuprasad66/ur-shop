@@ -18,7 +18,7 @@ const getCartData = async (req, res) => {
 const addToCart = async (req, res) => {
   try {
     let cartItem = await Cart.findOne({
-      product: req.body.product,
+      $and: [{ user: req.body.user_id }, { product: req.body.product }],
     });
     if (cartItem) {
       let item = await Cart.findByIdAndUpdate(
