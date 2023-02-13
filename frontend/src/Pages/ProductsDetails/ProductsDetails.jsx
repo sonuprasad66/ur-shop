@@ -14,6 +14,10 @@ import { useParams } from "react-router-dom";
 import { ImStarEmpty } from "react-icons/im";
 import { GrLocation } from "react-icons/gr";
 import { getProductsDetails } from "../../Redux/Products/action";
+import Men from "../../Home/Men";
+import Women from "../../Home/Women";
+import Kid from "../../Home/Kids";
+import Electronics from "../../Home/Electronics";
 
 export const ProductsDetails = () => {
   const [deliveryPin, setDeliveryPin] = useState("");
@@ -262,6 +266,18 @@ export const ProductsDetails = () => {
           </Box>
         </Box>
       </Flex>
+      <Box>
+        <Men />
+      </Box>
+      <Box>
+        <Women />
+      </Box>
+      <Box>
+        <Kid />
+      </Box>
+      <Box>
+        <Electronics />
+      </Box>
     </>
   );
 };

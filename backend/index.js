@@ -11,7 +11,6 @@ const { userRouter } = require("./Routes/User.route");
 const { productsRouter } = require("./Routes/Products.route");
 const { cartRouter } = require("./Routes/Cart.route");
 
-
 app.get("/", (req, res) => {
   res.send("Welcome to MainRoutes");
 });

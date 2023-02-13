@@ -23,7 +23,7 @@ const Women = () => {
         {" "}
         Womens - Top Picks
       </Text>
-      <SimpleGrid columns={[1, 2, 3, 5]} spacing="30px"  p={5}>
+      <SimpleGrid columns={[1, 2, 3, 5]} spacing="30px" p={5}>
         {data?.map((item) => (
           <ProductsCart key={item._id} products={item} />
         ))}

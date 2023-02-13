@@ -1,10 +1,18 @@
 import axios from "axios";
 import * as types from "./actionTypes";
+import {
+  GET_ALL_PRODUCTS,
+  GET_ALL_FILTER_PRODUCTS,
+  GET_PRODUCT_DETAILS,
+  GET_PRODUCT_SORT_BY_PRICE,
+  GET_PRODUCT_SORT_BY_DISCOUNT,
+  GET_PRODUCT_SORT_BY_RATING,
+} from "../.././Utils/Api";
 
 export const getProducts = (params) => (dispatch) => {
   dispatch({ type: types.GET_PRODUCTS_REQUEST });
   return axios
-    .get(`http://localhost:8080/getAllProducts`, params)
+    .get(GET_ALL_PRODUCTS, params)
     .then((res) => {
       // console.log(res.data);
       return dispatch({ type: types.GET_PRODUCTS_SUCCESS, payload: res.data });
@@ -17,7 +25,7 @@ export const getProducts = (params) => (dispatch) => {
 export const getFilterProducts = (params) => (dispatch) => {
   dispatch({ type: types.GET_FILTER_PRODUCTS_REQUEST });
   return axios
-    .get(`http://localhost:8080/getAllFilterProducts`, params)
+    .get(GET_ALL_FILTER_PRODUCTS, params)
     .then((res) => {
       // console.log(res.data);
       return dispatch({
@@ -38,7 +46,7 @@ export const getFilterProducts = (params) => (dispatch) => {
 export const getProductsDetails = (params) => (dispatch) => {
   dispatch({ type: types.GET_PRODUCTS_DETAILS_REQUEST });
   return axios
-    .get(`http://localhost:8080/getAllProductsDetails/${params}`)
+    .get(`${GET_PRODUCT_DETAILS}/${params}`)
     .then((res) => {
       // console.log(res.data);
       return dispatch({
@@ -59,7 +67,7 @@ export const getProductsDetails = (params) => (dispatch) => {
 export const getAllDataSortByPrice = (params) => (dispatch) => {
   dispatch({ type: types.SORTED_BY_PRICE_REQUEST });
   return axios
-    .get(`http://localhost:8080/getAllProductsSortByPrice?order=${params}`)
+    .get(`${GET_PRODUCT_SORT_BY_PRICE}?order=${params}`)
     .then((res) => {
       return dispatch({
         type: types.SORTED_BY_PRICE_SUCCESS,
@@ -77,7 +85,7 @@ export const getAllDataSortByPrice = (params) => (dispatch) => {
 export const getAllDataSortByDiscount = (params) => (dispatch) => {
   dispatch({ type: types.SORTED_BY_DISCOUNT_REQUEST });
   return axios
-    .get(`http://localhost:8080/getAllProductsSortByDiscount?order=${params}`)
+    .get(`${GET_PRODUCT_SORT_BY_DISCOUNT}?order=${params}`)
     .then((res) => {
       // console.log(res.data);
       return dispatch({
@@ -96,7 +104,7 @@ export const getAllDataSortByDiscount = (params) => (dispatch) => {
 export const getAllDataSortByRating = (params) => (dispatch) => {
   dispatch({ type: types.SORTED_BY_RATING_REQUEST });
   return axios
-    .get(`http://localhost:8080/getAllProductsSortByRating?order=${params}`)
+    .get(`${GET_PRODUCT_SORT_BY_RATING}?order=${params}`)
     .then((res) => {
       // console.log(res.data);
       return dispatch({
