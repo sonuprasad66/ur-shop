@@ -67,7 +67,7 @@ const CartCard = ({ id, img, title, brand, price, mrp, qty }) => {
 
               <HStack mt={8}>
                 <button
-                  disabled={qty===1}
+                  disabled={qty === 1}
                   style={{
                     borderRadius: "50%",
                     border: "1px solid black",

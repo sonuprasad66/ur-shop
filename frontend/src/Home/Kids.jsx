@@ -2,9 +2,10 @@ import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ProductsCart } from "../Pages/ProductsPage/ProductsCart";
+import { GET_ALL_KIDS_PRODUCTS } from "../Utils/Api";
 
 const getData = async () => {
-  let res = await axios.get("http://localhost:8080/getAllProductsKids");
+  let res = await axios.get(GET_ALL_KIDS_PRODUCTS);
   return res;
 };
 
