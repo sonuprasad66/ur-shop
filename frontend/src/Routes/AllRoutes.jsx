@@ -9,12 +9,14 @@ import { PaymentPage } from "../Pages/PaymentPage";
 import { CheckoutPage } from "../Pages/CheckoutPage";
 import { Wishlist } from "../Components/Wishlist/Wishlist";
 import { MyAccount } from "../Components/MyAccount/MyAccount";
+import { Team } from "../Components/ContactUs/Team";
 
 export const AllRoutes = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Products />} />
