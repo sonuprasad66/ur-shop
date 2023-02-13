@@ -7,6 +7,7 @@ import {
   HStack,
   Image,
   Text,
+  useColorMode,
   useToast,
   VStack,
 } from "@chakra-ui/react";
@@ -16,6 +17,8 @@ import { deleteCartData, updateCartData } from "../Redux/Cart/cart.action";
 
 const CartCard = ({ id, img, title, brand, price, mrp, qty }) => {
   const toast = useToast();
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const dispatch = useDispatch();
   const handleRemove = (id) => {
     dispatch(deleteCartData(id)).then((res) =>
@@ -97,7 +100,9 @@ const CartCard = ({ id, img, title, brand, price, mrp, qty }) => {
           </Center>
         </GridItem>
         <GridItem colSpan={[7, 4]}>
-          <Text color="#212121">{title} </Text>
+          <Text colour={colorMode === "light" ? "#212121" : "#fff"}>
+            {title}{" "}
+          </Text>
           <Text fontSize={"14px"} color="#878787">
             {title}{" "}
           </Text>
