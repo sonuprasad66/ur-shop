@@ -46,7 +46,7 @@
 
 
 
-<h3 align="center"><a href="https://mohit-nikeclone.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://github.com/sonuprasad66/ur-shop/"><strong>Want to see live preview »</strong></a></h3>
 
 
 
@@ -95,7 +95,7 @@
 ## Glimpses of Nike-Clone 🙈 :
 
 
-<table>
+<!-- <table>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/91532881/175955122-200a6ccb-54a5-4f39-9bc2-cd3ba3a4d102.jpeg" alt="home" /></td>
     <td><img src="https://user-images.githubusercontent.com/91532881/175955109-b51e3e81-4cd8-4f00-a8cd-873c82882a15.png" alt="coupons" /></td>
@@ -109,15 +109,15 @@
     <td><img src="https://user-images.githubusercontent.com/91532881/175957017-3530fe22-46ae-4bf7-a645-55f7a5f25ed9.jpeg" alt="men" /></td>
   </tr>
  
-</table>
+</table> -->
 
 <br />
 
 ## Test Coupon Codes
-```
-<!--NIKE5 (for 5% Off)-->
 
-```
+<!-- NIKE5 (for 5% Off) -->
+
+
 
 
 <br />
