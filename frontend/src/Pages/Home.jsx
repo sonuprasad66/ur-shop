@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Electronics from "../Home/Electronics";
 import HomeBottomCarousal from "../Home/HomeBottomCarousal";
 import HomeCard from "../Home/HomeCard";
