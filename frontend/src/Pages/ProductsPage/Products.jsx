@@ -1,4 +1,11 @@
-import { Box, Button, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  SimpleGrid,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import "./Products.css";
 import { useEffect } from "react";
@@ -14,6 +21,7 @@ import { Sidebar } from "./Sidebar";
 export const Products = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openSort, setOpenSort] = useState(false);
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -53,6 +61,7 @@ export const Products = () => {
       <Box p={"20px"}>
         <Box
           w={"100%"}
+          bg={colorMode === "light" ? "#fff" : "#14244B"}
           className={openSort ? "select_sort active" : "select_sort"}
         >
           <Text onClick={() => setOpenSort(false)} className="sort_cross">
@@ -74,6 +83,7 @@ export const Products = () => {
             w={["100%", "35%", "15%", "15%"]}
             h={"500px"}
             p={4}
+            bg={colorMode === "light" ? "#fff" : "#14244B"}
             className={openMenu ? "left_side_bar active" : "left_side_bar"}
           >
             <Text onClick={() => setOpenMenu(false)} className="sidebar_cross">
