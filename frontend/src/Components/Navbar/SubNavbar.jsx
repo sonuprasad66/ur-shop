@@ -24,7 +24,7 @@ export const SubNavbar = () => {
         <Link to={"/"}>
           <Text fontSize={"20px"}>Electronics</Text>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/team"}>
           <Text fontSize={"20px"}>About Us</Text>
         </Link>
       </Flex>
