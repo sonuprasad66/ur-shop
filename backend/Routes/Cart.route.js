@@ -12,7 +12,7 @@ cartRouter.use(authentication);
 
 cartRouter.get("/cart", getCartData);
 cartRouter.post("/cart", addToCart);
-cartRouter.delete("/cart:id", deleteCartProduct);
-cartRouter.patch("/cart:id", updateCartProduct);
+cartRouter.delete("/cart/:id", deleteCartProduct);
+cartRouter.patch("/cart/:id", updateCartProduct);
 
 module.exports = { cartRouter };

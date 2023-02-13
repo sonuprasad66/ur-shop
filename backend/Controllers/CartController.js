@@ -1,15 +1,14 @@
 const express = require("express");
 const Cart = require("../Models/Cart.model");
-const User = require("../Models/User.model");
+const Product = require("../Models/Products.model");
 
 const app = express.Router();
 
 const getCartData = async (req, res) => {
-  console.log(req.user_id);
   try {
     let items = await Cart.find({
-      user: req.userId,
-    }).populate(["user", "product"]);
+      user: req.body.user_id,
+    }).populate("product");
     res.send(items);
   } catch (e) {
     res.status(500).send(e.message);
@@ -21,59 +20,73 @@ const addToCart = async (req, res) => {
     let cartItem = await Cart.findOne({
       product: req.body.product,
     });
-
     if (cartItem) {
-      if (cartItem.product.quantity < req.body.quantity) {
-        return res.send(
-          `This item is not able in the required quanitity, max quanity allowed is ${cartItem.product.quantity}`
-        );
-      }
-
       let item = await Cart.findByIdAndUpdate(
         cartItem.id,
         {
-          quantity: req.body.quantity,
+          qty: cartItem.qty + req.body.qty,
         },
         {
           new: true,
         }
-      ).populate("product");
-      return res.send(item);
+      );
+      return res.json({
+        msg: "Product is already in the cart quantity increases",
+        data: item,
+      });
     } else {
-      console.log(req.body);
       let item = await Cart.create({
         ...req.body,
-        user: req.userId,
+        user: req.body.user_id,
       });
-      return res.send(item);
+      return res.json({
+        msg: "Product added to the cart",
+        data: item,
+      });
     }
   } catch (e) {
-    res.status(500).send(e.message);
+    res.status(500).send({ msg: e.message });
   }
 };
 
 const deleteCartProduct = async (req, res) => {
   const id = req.params.id;
+  console.log(id);
   try {
     let deletedData = await Cart.findByIdAndDelete(id);
-    res.status(200).send(deletedData);
+    res.status(200).json({
+      msg: "Product deleted successfull from the cart",
+      data: deletedData,
+    });
   } catch (er) {
-    res.status(500).send(er.message);
+    res.status(500).send({ msg: e.message });
   }
 };
 
 const updateCartProduct = async (req, res) => {
   const id = req.params.id;
-  let singleProduct = await Cart.findOne({ userId: userData.id, product: pid });
+
   try {
-    let updateData = await Cart.findByIdAndUpdate(
-      id,
-      { quantity: req.body.quantity },
-      { new: true }
-    );
-    res.status(200).send(updateData);
+    let cartItem = await Cart.findOne({ _id: id });
+    if (cartItem) {
+      let item = await Cart.findByIdAndUpdate(
+        cartItem.id,
+        {
+          qty: cartItem.qty + req.body.qty,
+        },
+        {
+          new: true,
+        }
+      );
+      return res.json({
+        msg: "Quantity increases successfully",
+        data: item,
+      });
+    } else {
+      res.status(404).json({ msg: "Something went wrong" });
+    }
   } catch (er) {
-    res.status(500).send(er.message);
+    res.status(500).json({ msg: er.message });
   }
 };
 

@@ -6,6 +6,7 @@ import { FiHeart } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { getProductsDetails } from "../../Redux/Products/action";
 import { useNavigate } from "react-router-dom";
+import { addCartData } from "../../Redux/Cart/cart.action";
 
 export const ProductsCart = ({ products }) => {
   const dispatch = useDispatch();
@@ -16,7 +17,9 @@ export const ProductsCart = ({ products }) => {
     navigate(`/products/${id}`);
   };
 
-  const handleCart = (id) => {};
+  const handleCart = (id) => {
+    dispatch(addCartData({ product: id, qty: 1 }));
+  };
 
   return (
     <>
