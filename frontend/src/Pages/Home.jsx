@@ -1,7 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 import Electronics from "../Home/Electronics";
-import Footer from "../Home/Footer";
 import HomeBottomCarousal from "../Home/HomeBottomCarousal";
 import HomeCard from "../Home/HomeCard";
 import HomePet from "../Home/HomePet";
@@ -21,9 +20,8 @@ const Home = () => {
       <Women />
       <HomeCard />
       <Kid />
-      <Electronics/>
+      <Electronics />
       <HomePet />
-      <Footer />
     </Box>
   );
 };

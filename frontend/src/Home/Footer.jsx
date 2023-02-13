@@ -12,20 +12,26 @@ const Footer = () => {
         m="auto"
         py={"5%"}
       >
-        <Box color="#fff" lineHeight="25px" >
+        <Box color="#fff" lineHeight="25px">
           <Text lineHeight="30px" mb={2}>
             <b>MOST POPULAR CATEGORIES</b>{" "}
           </Text>
           <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>Staples</Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>Beverages</Text>
+          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
+            Beverages
+          </Text>
           <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
             Personal Care
           </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>Home Care</Text>
+          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
+            Home Care
+          </Text>
           <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
             Fruits and Vegetables
           </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>Baby Care </Text>
+          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
+            Baby Care{" "}
+          </Text>
           <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
             Snacks & Branded Foods{" "}
           </Text>
@@ -33,7 +39,7 @@ const Footer = () => {
             Dairy & Bakery{" "}
           </Text>
         </Box>
-        <Box  lineHeight="25px" color={"#fff"}>
+        <Box lineHeight="25px" color={"#fff"}>
           <Text lineHeight="30px" mb={2}>
             <b>CUSTOMER SERVICES</b>{" "}
           </Text>
