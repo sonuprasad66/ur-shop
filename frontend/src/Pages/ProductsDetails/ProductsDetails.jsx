@@ -90,13 +90,18 @@ export const ProductsDetails = () => {
     <>
       <Flex
         flexDirection={["column", "column", "column", "row"]}
-        h={"100vh"}
         m={"10px auto"}
         p={5}
       >
-        <Flex w={["column", "column", "column", "60%"]} h={"100%"}>
+        <Flex w={["column", "column", "column", "60%"]}>
           <Box w={"30%"} p={2}>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
+            <Box
+              w={"90%"}
+              h={["60px", "60px", "100px", "120px"]}
+              boxShadow="base"
+              p={3}
+              mt={3}
+            >
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -105,7 +110,13 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
+            <Box
+              w={"90%"}
+              h={["60px", "60px", "100px", "120px"]}
+              boxShadow="base"
+              p={3}
+              mt={3}
+            >
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -114,7 +125,13 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
+            <Box
+              w={"90%"}
+              h={["60px", "60px", "100px", "120px"]}
+              boxShadow="base"
+              p={3}
+              mt={3}
+            >
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -123,7 +140,13 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
+            <Box
+              w={"90%"}
+              h={["60px", "60px", "100px", "120px"]}
+              boxShadow="base"
+              p={3}
+              mt={3}
+            >
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -133,7 +156,7 @@ export const ProductsDetails = () => {
               />
             </Box>
           </Box>
-          <Box w={"70%"} h={"100%"} p={4}>
+          <Box w={"70%"} h={["300px", "400px", "500px", "600px"]} p={4}>
             <Image
               w={"100%"}
               h={"100%"}
@@ -143,7 +166,7 @@ export const ProductsDetails = () => {
           </Box>
         </Flex>
 
-        <Box w={["100%", "100%", "100%", "50%"]} h={"100%"} p={5}>
+        <Box w={["100%", "100%", "100%", "50%"]} p={5}>
           <Heading fontSize={"25px"}>{product.Product_Title}</Heading>
 
           <Flex gap={"20px"} alignItems={"center"} mt={2}>
