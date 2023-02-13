@@ -5,6 +5,7 @@ import {
   Heading,
   Image,
   ListItem,
+  Spinner,
   Text,
   UnorderedList,
   useToast,
@@ -18,6 +19,7 @@ import Men from "../../Home/Men";
 import Women from "../../Home/Women";
 import Kid from "../../Home/Kids";
 import Electronics from "../../Home/Electronics";
+import { addCartData } from "../../Redux/Cart/cart.action";
 
 export const ProductsDetails = () => {
   const [deliveryPin, setDeliveryPin] = useState("");
@@ -26,6 +28,7 @@ export const ProductsDetails = () => {
   const { id } = useParams();
 
   const product = useSelector((state) => state.ProductsReducer.productsDetails);
+  const isLoading = useSelector((state) => state.cart.loading);
 
   useEffect(() => {
     dispatch(getProductsDetails(id));
@@ -35,7 +38,35 @@ export const ProductsDetails = () => {
     // console.log(id);
   };
 
-  const handleCart = (id) => {};
+  const handleCart = (id) => {
+    dispatch(addCartData({ product: id, qty: 1 })).then((res) => {
+      if (res.status === "success") {
+        toast({
+          title: res.msg,
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      } else if (res.status === "info") {
+        toast({
+          title: res.msg,
+          status: "info",
+          duration: 4000,
+          isClosable: true,
+          position: "top",
+        });
+      } else {
+        toast({
+          title: "Product Added Failed",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+    });
+  };
 
   const handleDeliveryCheck = () => {
     if (deliveryPin.length < 6 || deliveryPin.length > 6) {
@@ -210,7 +241,19 @@ export const ProductsDetails = () => {
               borderRadius={1}
               w={"180px"}
             >
-              <Text onClick={() => handleCart(product._id)}>Add To Cart</Text>
+              <Text onClick={() => handleCart(product._id)}>
+                {isLoading ? (
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="blue.500"
+                    size="md"
+                  />
+                ) : (
+                  "Add To Cart"
+                )}
+              </Text>
             </Box>
 
             <Box

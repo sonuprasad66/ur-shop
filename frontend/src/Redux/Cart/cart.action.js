@@ -58,7 +58,7 @@ export const deleteCartData = (id) => async (dispatch) => {
 
 export const updateCartData = (id, data) => async (dispatch) => {
   dispatch({ type: UPDATE_CART_LOADING });
-  console.log(id, data);
+  console.log(id);
   try {
     const res = await axios.patch(
       `${CART_API}/${id}`,
