@@ -52,6 +52,7 @@ const userLogin = async (req, res) => {
             message: "Login successful",
             token: token,
             role: user.role,
+            id: user._id,
           });
         } else {
           res.send({ message: "Login failed", status: "Failed" });
