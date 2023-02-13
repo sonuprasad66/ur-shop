@@ -11,7 +11,6 @@ const getData = async () => {
 
 const Electronics = () => {
   const [data, setData] = useState([]);
-  console.log(data);
 
   useEffect(() => {
     getData().then((res) => setData(res.data.filter((el, i) => i < 5)));

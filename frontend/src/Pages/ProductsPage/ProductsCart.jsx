@@ -5,13 +5,14 @@ import {
   Flex,
   Heading,
   Image,
+  Spinner,
   Text,
   useToast,
 } from "@chakra-ui/react";
 import { ImStarEmpty } from "react-icons/im";
 import { FaCartPlus } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProductsDetails } from "../../Redux/Products/action";
 import { useNavigate } from "react-router-dom";
 import { addCartData } from "../../Redux/Cart/cart.action";
@@ -20,6 +21,8 @@ export const ProductsCart = ({ products }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
+
+  // const isLoading = useSelector((state) => state.cart.loading);
 
   const handleDetails = (id) => {
     dispatch(getProductsDetails(id));
@@ -119,7 +122,20 @@ export const ProductsCart = ({ products }) => {
           p={2}
           borderRadius={1}
         >
-          <Text onClick={() => handleCart(products._id)}>Add To Cart</Text>
+          <Text onClick={() => handleCart(products._id)}>
+            {/* {isLoading ? (
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="md"
+              />
+            ) : (
+              "Add To Cart"
+            )} */}
+            Add To Cart
+          </Text>
         </Box>
       </Box>
     </>
