@@ -2,9 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const app = express();
-app.use(express.json());
 const cors = require("cors");
-app.use(cors());
 require("dotenv").config();
 const { connection } = require("./Config/db");
 const { userRouter } = require("./Routes/User.route");
@@ -14,7 +12,8 @@ const { cartRouter } = require("./Routes/Cart.route");
 app.get("/", (req, res) => {
   res.send("Welcome to MainRoutes");
 });
-
+app.use(cors());
+app.use(express.json());
 app.use("/", userRouter);
 app.use("/", productsRouter);
 app.use("/", cartRouter);
