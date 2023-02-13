@@ -1,7 +1,7 @@
 import { Box, Text, Flex } from "@chakra-ui/react";
 import React from "react";
 
-const CartDetails = ({total,totalMrp,item}) => {
+const CartDetails = ({ total, totalMrp, item }) => {
   return (
     <Box
       boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;"
@@ -39,7 +39,7 @@ const CartDetails = ({total,totalMrp,item}) => {
         <Text color="#212121">₹ {total}</Text>
       </Flex>
       <Text color={"#388F3C"} pb={3}>
-        You will save ₹ {totalMrp-total} on this order
+        You will save ₹ {totalMrp - total} on this order
       </Text>
     </Box>
   );

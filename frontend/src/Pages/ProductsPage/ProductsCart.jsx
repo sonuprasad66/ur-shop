@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import { ImStarEmpty } from "react-icons/im";
 import { FaCartPlus } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
@@ -11,6 +19,7 @@ import { addCartData } from "../../Redux/Cart/cart.action";
 export const ProductsCart = ({ products }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const toast = useToast();
 
   const handleDetails = (id) => {
     dispatch(getProductsDetails(id));
@@ -18,7 +27,33 @@ export const ProductsCart = ({ products }) => {
   };
 
   const handleCart = (id) => {
-    dispatch(addCartData({ product: id, qty: 1 }));
+    dispatch(addCartData({ product: id, qty: 1 })).then((res) => {
+      if (res.status === "success") {
+        toast({
+          title: res.msg,
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      } else if (res.status === "info") {
+        toast({
+          title: res.msg,
+          status: "info",
+          duration: 4000,
+          isClosable: true,
+          position: "top",
+        });
+      } else {
+        toast({
+          title: "Product Added Failed",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+    });
   };
 
   return (

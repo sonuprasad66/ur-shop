@@ -1,4 +1,5 @@
 export const PORT = "http://localhost:8080";
+export const CART_API = `${PORT}/cart`;
 export const USER_LOGIN = `${PORT}/login`;
 export const USER_SIGNUP = `${PORT}/signup`;
 export const USER_PROFILE = `${PORT}/profile`;
