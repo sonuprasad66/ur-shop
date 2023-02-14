@@ -221,9 +221,14 @@ export const PaymentPage = () => {
           <Box w={"60%"} h="-moz-max-content">
             <TabPanels>
               <TabPanel>
-                <Text fontSize={"15"} fontWeight={"bold"}>
-                  Pay on delivery
-                </Text>
+                <Flex gap={"130px"} alignItems={"center"}>
+                  <Text fontSize={"15"} fontWeight={"bold"}>
+                    Pay on delivery
+                  </Text>
+                  <Text fontSize={"15"} fontWeight={"bold"} color={"blue"}>
+                    Total Amount :
+                  </Text>
+                </Flex>
                 <Flex alignItems={"center"} gap="10">
                   <Flex
                     mt={2}

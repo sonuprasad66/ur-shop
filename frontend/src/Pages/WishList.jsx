@@ -6,12 +6,10 @@ import WishlisCard from "../Components/Wishlist/WishlisCard";
 import { deleteWishListData, getWishListData } from "../Redux/WaitList/action";
 const token = localStorage.getItem("token");
 
-
-
 const WishList = () => {
   const dispatch = useDispatch();
 
-  const {data} = useSelector((store) => store.wishlist);
+  const { data } = useSelector((store) => store.wishlist);
 
   useEffect(() => {
     dispatch(getWishListData());
