@@ -15,7 +15,7 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import "../App.css";
 import { HiCurrencyDollar } from "react-icons/hi";
 import { Link } from "react-router-dom";
@@ -25,11 +25,22 @@ import { BiRupee } from "react-icons/bi";
 import { BsFillGiftFill, BsTag } from "react-icons/bs";
 import { TfiFaceSad } from "react-icons/tfi";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartData } from "../Redux/Cart/cart.action";
+
 export const CheckoutPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [coupan, setCoupan] = useState(false);
   const [discount, setDiscount] = useState(0);
+
+  const cartData = useSelector((store) => store.cart.data);
+  const dispatch = useDispatch();
+  console.log(cartData)
+
+  useEffect(() => {
+    dispatch(getCartData());
+  }, []);
 
   const address = "Aurangabad,maharashtra-431001";
   const user = "AMol";

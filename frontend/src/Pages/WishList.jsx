@@ -1,34 +1,24 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import WishlisCard from "../Components/Wishlist/WishlisCard";
+import { deleteWishListData, getWishListData } from "../Redux/WaitList/action";
 const token = localStorage.getItem("token");
 
-const getData = async () => {
-  let res = await axios.get("http://localhost:8080/wishlist", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return res;
-};
+
 
 const WishList = () => {
-  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+
+  const {data} = useSelector((store) => store.wishlist);
 
   useEffect(() => {
-    getData().then((res) => setData(res.data));
+    dispatch(getWishListData());
   }, []);
-  console.log(data);
 
   const deleteWishlist = async (id) => {
-    console.log(id);
-    await axios
-      .delete(`http://localhost:8080/wishlist/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        getData().then((res) => setData(res.data));
-      })
-      .catch((er) => console.log(er));
+    dispatch(deleteWishListData(id));
   };
 
   return (
