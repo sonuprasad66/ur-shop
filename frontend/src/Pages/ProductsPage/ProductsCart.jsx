@@ -1,26 +1,9 @@
 import React, { useState } from "react";
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { ImStarEmpty } from "react-icons/im";
-import { FaCartPlus } from "react-icons/fa";
-import { FiHeart } from "react-icons/fi";
 import { AiFillHeart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-
-import React from "react";
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Image,
-  Spinner,
-  Text,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text, useToast } from "@chakra-ui/react";
 import { ImStarEmpty } from "react-icons/im";
-import { FaCartPlus } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
 import { getProductsDetails } from "../../Redux/Products/action";
 import { useNavigate } from "react-router-dom";
 import { addCartData } from "../../Redux/Cart/cart.action";
@@ -31,7 +14,6 @@ export const ProductsCart = ({ products }) => {
   const navigate = useNavigate();
   const [toogle, setToogle] = useState(false);
   const token = localStorage.getItem("token");
-
   const toast = useToast();
 
   // const isLoading = useSelector((state) => state.cart.loading);
