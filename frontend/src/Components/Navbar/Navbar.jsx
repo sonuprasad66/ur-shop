@@ -36,6 +36,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { SubNavbar } from "./SubNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../../Redux/Auth/action";
+import { getCartData } from "../../Redux/Cart/cart.action";
+import { getWishListData } from "../../Redux/WaitList/action";
 export const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,6 +49,15 @@ export const Navbar = () => {
     navigate("/");
   };
   const currentUser = useSelector((state) => state.AuthReducer.currentUser);
+  const cartData = useSelector((store) => store.cart.data);
+  const wishlistData = useSelector((store) => store.wishlist.data);
+
+  useEffect(() => {}, []);
+
+  useEffect(() => {
+    dispatch(getWishListData());
+    dispatch(getCartData());
+  }, []);
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
@@ -166,10 +177,41 @@ export const Navbar = () => {
             <Link to="/wishlist">
               <FiHeart size={25} cursor="pointer" />
             </Link>
+            <Flex
+              visibility={["hidden", "hidden", "hidden", "visible"]}
+              height="20px"
+              width="15px"
+              borderRadius="25px"
+              padding="5px"
+              backgroundColor="red"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              position="absolute"
+              top="10px"
+              right="185px"
+            >
+              {wishlistData.length}
+            </Flex>
             <Link to="/cart">
               <HiOutlineShoppingCart size={25} cursor="pointer" />
             </Link>
-
+            <Flex
+              visibility={["hidden", "hidden", "hidden", "visible"]}
+              height="20px"
+              width="15px"
+              borderRadius="25px"
+              padding="5px"
+              backgroundColor="red"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              position="absolute"
+              top="10px"
+              right="130px"
+            >
+              {cartData.length}
+            </Flex>
             <Box>
               {colorMode === "light" ? (
                 <RiMoonClearLine

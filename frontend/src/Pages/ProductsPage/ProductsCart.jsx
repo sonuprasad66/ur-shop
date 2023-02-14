@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -66,7 +64,6 @@ export const ProductsCart = ({ products }) => {
   const addWishList = async (id) => {
     console.log(id);
     dispatch(addWishListData({ product: id }));
-  
   };
 
   const deleteWishlist = async (id) => {
@@ -92,7 +89,7 @@ export const ProductsCart = ({ products }) => {
 
         <Flex justifyContent={"space-between"} alignItems={"center"} mt={2}>
           <Heading size={"20px"}>{products.Brand}</Heading>
-          {data?.filter((el) => el.product._id === products._id).length==1 ? (
+          {data?.filter((el) => el.product._id === products._id).length == 1 ? (
             <AiFillHeart
               fontSize={"20px"}
               cursor={"pointer"}
