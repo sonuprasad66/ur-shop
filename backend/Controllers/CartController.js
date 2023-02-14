@@ -1,6 +1,5 @@
 const express = require("express");
 const Cart = require("../Models/Cart.model");
-const Product = require("../Models/Products.model");
 
 const app = express.Router();
 
@@ -51,7 +50,6 @@ const addToCart = async (req, res) => {
 
 const deleteCartProduct = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   try {
     let deletedData = await Cart.findByIdAndDelete(id);
     res.status(200).json({
