@@ -32,6 +32,7 @@ const addToCart = async (req, res) => {
       return res.json({
         msg: "Product is already in the cart quantity increases",
         data: item,
+        status: "info",
       });
     } else {
       let item = await Cart.create({
@@ -41,6 +42,7 @@ const addToCart = async (req, res) => {
       return res.json({
         msg: "Product added to the cart",
         data: item,
+        status: "success",
       });
     }
   } catch (e) {

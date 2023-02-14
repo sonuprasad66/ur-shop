@@ -10,9 +10,8 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   let total = data.reduce((acc, el) => acc + el.qty * el.product.Price, 0);
-  console.log(total);
+
   let totalMrp = data.reduce((acc, el) => acc + el.qty * el.product.MRP, 0);
-  console.log(total);
 
   useEffect(() => {
     dispatch(getCartData());

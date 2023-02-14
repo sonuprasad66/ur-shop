@@ -15,16 +15,19 @@ export const SubNavbar = () => {
         <Link to={"/products"}>
           <Text fontSize={"20px"}>Products</Text>
         </Link>
-        <Link to={"/"}>
-          <Text fontSize={"20px"}>Men</Text>
+        <Link to={"/mens"}>
+          <Text fontSize={"20px"}>Mens</Text>
         </Link>
-        <Link to={"/"}>
-          <Text fontSize={"20px"}>Women</Text>
+        <Link to={"/womens"}>
+          <Text fontSize={"20px"}>Womens</Text>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/kids"}>
+          <Text fontSize={"20px"}>Kids</Text>
+        </Link>
+        <Link to={"/electronics"}>
           <Text fontSize={"20px"}>Electronics</Text>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/team"}>
           <Text fontSize={"20px"}>About Us</Text>
         </Link>
       </Flex>
