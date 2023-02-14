@@ -7,8 +7,8 @@ import { Products } from "../Pages/ProductsPage/Products";
 import { ProductsDetails } from "../Pages/ProductsDetails/ProductsDetails";
 import { PaymentPage } from "../Pages/PaymentPage";
 import { CheckoutPage } from "../Pages/CheckoutPage";
-import { Wishlist } from "../Components/Wishlist/Wishlist";
 import { MyAccount } from "../Components/MyAccount/MyAccount";
+import WishList from "../Pages/WishList";
 import { Team } from "../Components/ContactUs/Team";
 import { Mens } from "../Components/ProductCategory/Mens";
 import { Womens } from "../Components/ProductCategory/Womens";
@@ -32,7 +32,7 @@ export const AllRoutes = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/myaccount" element={<MyAccount />} />
       </Routes>
     </>
