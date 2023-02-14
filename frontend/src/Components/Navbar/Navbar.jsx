@@ -217,22 +217,27 @@ export const Navbar = () => {
                   Products
                 </Text>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/mens"}>
                 <Text onClick={onClose} fontWeight={"bold"} fontSize={"20px"}>
                   Men
                 </Text>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/womens"}>
                 <Text fontWeight={"bold"} onClick={onClose} fontSize={"20px"}>
                   Women
                 </Text>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/kids"}>
+                <Text fontWeight={"bold"} onClick={onClose} fontSize={"20px"}>
+                  Kids
+                </Text>
+              </Link>
+              <Link to={"/electronics"}>
                 <Text onClick={onClose} fontWeight={"bold"} fontSize={"20px"}>
                   Electronics
                 </Text>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/team"}>
                 <Text onClick={onClose} fontWeight={"bold"} fontSize={"20px"}>
                   About Us
                 </Text>

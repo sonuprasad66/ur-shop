@@ -9,12 +9,22 @@ import { PaymentPage } from "../Pages/PaymentPage";
 import { CheckoutPage } from "../Pages/CheckoutPage";
 import { MyAccount } from "../Components/MyAccount/MyAccount";
 import WishList from "../Pages/WishList";
+import { Team } from "../Components/ContactUs/Team";
+import { Mens } from "../Components/ProductCategory/Mens";
+import { Womens } from "../Components/ProductCategory/Womens";
+import { Kids } from "../Components/ProductCategory/Kids";
+import { Electronics } from "../Components/ProductCategory/Electronics";
 
 export const AllRoutes = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/mens" element={<Mens />} />
+        <Route path="/womens" element={<Womens />} />
+        <Route path="/kids" element={<Kids />} />
+        <Route path="/electronics" element={<Electronics />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Products />} />

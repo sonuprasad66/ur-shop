@@ -2,15 +2,15 @@ import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ProductsCart } from "../Pages/ProductsPage/ProductsCart";
+import { GET_ALL_ELECTRONICS_PRODUCTS } from "../Utils/Api";
 
 const getData = async () => {
-  let res = await axios.get("http://localhost:8080/getAllProductsElectronics");
+  let res = await axios.get(GET_ALL_ELECTRONICS_PRODUCTS);
   return res;
 };
 
 const Electronics = () => {
   const [data, setData] = useState([]);
-  console.log(data);
 
   useEffect(() => {
     getData().then((res) => setData(res.data.filter((el, i) => i < 5)));

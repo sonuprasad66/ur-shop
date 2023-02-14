@@ -5,6 +5,22 @@ import { FaCartPlus } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
 import { AiFillHeart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
+
+import React from "react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Spinner,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
+import { ImStarEmpty } from "react-icons/im";
+import { FaCartPlus } from "react-icons/fa";
+import { FiHeart } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
 import { getProductsDetails } from "../../Redux/Products/action";
 import { useNavigate } from "react-router-dom";
 import { addCartData } from "../../Redux/Cart/cart.action";
@@ -16,13 +32,43 @@ export const ProductsCart = ({ products }) => {
   const [toogle, setToogle] = useState(false);
   const token = localStorage.getItem("token");
 
+  const toast = useToast();
+
+  // const isLoading = useSelector((state) => state.cart.loading);
+
   const handleDetails = (id) => {
     dispatch(getProductsDetails(id));
     navigate(`/products/${id}`);
   };
 
   const handleCart = (id) => {
-    dispatch(addCartData({ product: id, qty: 1 }));
+    dispatch(addCartData({ product: id, qty: 1 })).then((res) => {
+      if (res.status === "success") {
+        toast({
+          title: res.msg,
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      } else if (res.status === "info") {
+        toast({
+          title: res.msg,
+          status: "info",
+          duration: 4000,
+          isClosable: true,
+          position: "top",
+        });
+      } else {
+        toast({
+          title: "Product Added Failed",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+    });
   };
 
   const addWishList = async (id) => {
@@ -125,7 +171,20 @@ export const ProductsCart = ({ products }) => {
           p={2}
           borderRadius={1}
         >
-          <Text onClick={() => handleCart(products._id)}>Add To Cart</Text>
+          <Text onClick={() => handleCart(products._id)}>
+            {/* {isLoading ? (
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="md"
+              />
+            ) : (
+              "Add To Cart"
+            )} */}
+            Add To Cart
+          </Text>
         </Box>
       </Box>
     </>

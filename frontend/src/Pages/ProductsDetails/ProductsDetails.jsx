@@ -5,6 +5,7 @@ import {
   Heading,
   Image,
   ListItem,
+  Spinner,
   Text,
   UnorderedList,
   useToast,
@@ -18,6 +19,7 @@ import Men from "../../Home/Men";
 import Women from "../../Home/Women";
 import Kid from "../../Home/Kids";
 import Electronics from "../../Home/Electronics";
+import { addCartData } from "../../Redux/Cart/cart.action";
 
 export const ProductsDetails = () => {
   const [deliveryPin, setDeliveryPin] = useState("");
@@ -26,6 +28,7 @@ export const ProductsDetails = () => {
   const { id } = useParams();
 
   const product = useSelector((state) => state.ProductsReducer.productsDetails);
+  const isLoading = useSelector((state) => state.cart.loading);
 
   useEffect(() => {
     dispatch(getProductsDetails(id));
@@ -35,7 +38,35 @@ export const ProductsDetails = () => {
     // console.log(id);
   };
 
-  const handleCart = (id) => {};
+  const handleCart = (id) => {
+    dispatch(addCartData({ product: id, qty: 1 })).then((res) => {
+      if (res.status === "success") {
+        toast({
+          title: res.msg,
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      } else if (res.status === "info") {
+        toast({
+          title: res.msg,
+          status: "info",
+          duration: 4000,
+          isClosable: true,
+          position: "top",
+        });
+      } else {
+        toast({
+          title: "Product Added Failed",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+    });
+  };
 
   const handleDeliveryCheck = () => {
     if (deliveryPin.length < 6 || deliveryPin.length > 6) {
@@ -59,13 +90,18 @@ export const ProductsDetails = () => {
     <>
       <Flex
         flexDirection={["column", "column", "column", "row"]}
-        h={"100vh"}
         m={"10px auto"}
         p={5}
       >
-        <Flex w={["column", "column", "column", "60%"]} h={"100%"}>
+        <Flex w={["column", "column", "column", "60%"]}>
           <Box w={"30%"} p={2}>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
+            <Box
+              w={"90%"}
+              h={["60px", "60px", "100px", "120px"]}
+              boxShadow="base"
+              p={3}
+              mt={3}
+            >
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -74,7 +110,13 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
+            <Box
+              w={"90%"}
+              h={["60px", "60px", "100px", "120px"]}
+              boxShadow="base"
+              p={3}
+              mt={3}
+            >
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -83,7 +125,13 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
+            <Box
+              w={"90%"}
+              h={["60px", "60px", "100px", "120px"]}
+              boxShadow="base"
+              p={3}
+              mt={3}
+            >
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -92,7 +140,13 @@ export const ProductsDetails = () => {
                 borderRadius={5}
               />
             </Box>
-            <Box w={"90%"} h={"22%"} boxShadow="base" p={3} mt={3}>
+            <Box
+              w={"90%"}
+              h={["60px", "60px", "100px", "120px"]}
+              boxShadow="base"
+              p={3}
+              mt={3}
+            >
               <Image
                 w={"100%"}
                 h={"100%"}
@@ -102,7 +156,7 @@ export const ProductsDetails = () => {
               />
             </Box>
           </Box>
-          <Box w={"70%"} h={"100%"} p={4}>
+          <Box w={"70%"} h={["300px", "400px", "500px", "600px"]} p={4}>
             <Image
               w={"100%"}
               h={"100%"}
@@ -112,7 +166,7 @@ export const ProductsDetails = () => {
           </Box>
         </Flex>
 
-        <Box w={["100%", "100%", "100%", "50%"]} h={"100%"} p={5}>
+        <Box w={["100%", "100%", "100%", "50%"]} p={5}>
           <Heading fontSize={"25px"}>{product.Product_Title}</Heading>
 
           <Flex gap={"20px"} alignItems={"center"} mt={2}>
@@ -210,7 +264,19 @@ export const ProductsDetails = () => {
               borderRadius={1}
               w={"180px"}
             >
-              <Text onClick={() => handleCart(product._id)}>Add To Cart</Text>
+              <Text onClick={() => handleCart(product._id)}>
+                {isLoading ? (
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="blue.500"
+                    size="md"
+                  />
+                ) : (
+                  "Add To Cart"
+                )}
+              </Text>
             </Box>
 
             <Box
