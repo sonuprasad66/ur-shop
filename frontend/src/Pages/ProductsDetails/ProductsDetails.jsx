@@ -19,11 +19,8 @@ import Men from "../../Home/Men";
 import Women from "../../Home/Women";
 import Kid from "../../Home/Kids";
 import Electronics from "../../Home/Electronics";
-<<<<<<< HEAD
 import { addWishListData } from "../../Redux/WaitList/action";
-=======
 import { addCartData } from "../../Redux/Cart/cart.action";
->>>>>>> 0b4a1a6f8de5b543d95dbbcc05e6c3ec3410324e
 
 export const ProductsDetails = () => {
   const [deliveryPin, setDeliveryPin] = useState("");

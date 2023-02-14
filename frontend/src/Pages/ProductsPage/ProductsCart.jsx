@@ -1,23 +1,14 @@
-<<<<<<< HEAD
+
+
 import React, { useEffect, useState } from "react";
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { ImStarEmpty } from "react-icons/im";
-import { FaCartPlus } from "react-icons/fa";
-import { FiHeart } from "react-icons/fi";
 import { AiFillHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-=======
-import React, { useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
-import { useDispatch } from "react-redux";
 import { Box, Flex, Heading, Image, Text, useToast } from "@chakra-ui/react";
 import { ImStarEmpty } from "react-icons/im";
 import { FiHeart } from "react-icons/fi";
->>>>>>> 0b4a1a6f8de5b543d95dbbcc05e6c3ec3410324e
 import { getProductsDetails } from "../../Redux/Products/action";
 import { useNavigate } from "react-router-dom";
 import { addCartData } from "../../Redux/Cart/cart.action";
-import axios from "axios";
 import {
   addWishListData,
   deleteWishListData,
@@ -27,19 +18,15 @@ import {
 export const ProductsCart = ({ products }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [toogle, setToogle] = useState(false);
-<<<<<<< HEAD
 
   const { data } = useSelector((store) => store.wishlist);
   useEffect(() => {
     dispatch(getWishListData());
   }, []);
-=======
   const token = localStorage.getItem("token");
   const toast = useToast();
 
   // const isLoading = useSelector((state) => state.cart.loading);
->>>>>>> 0b4a1a6f8de5b543d95dbbcc05e6c3ec3410324e
 
   const handleDetails = (id) => {
     dispatch(getProductsDetails(id));

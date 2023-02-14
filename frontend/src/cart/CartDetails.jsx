@@ -1,5 +1,6 @@
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Text, Flex, Button } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CartDetails = ({ total, totalMrp, item }) => {
   return (
@@ -41,6 +42,16 @@ const CartDetails = ({ total, totalMrp, item }) => {
       <Text color={"#388F3C"} pb={3}>
         You will save ₹ {totalMrp - total} on this order
       </Text>
+      <Link to="/checkout">
+        <Button
+          bg={"#14244b"}
+          color={"white"}
+          _hover={{ bg: "#193780" }}
+          w="full"
+        >
+          Checkout
+        </Button>
+      </Link>
     </Box>
   );
 };
