@@ -18,6 +18,7 @@ import Men from "../../Home/Men";
 import Women from "../../Home/Women";
 import Kid from "../../Home/Kids";
 import Electronics from "../../Home/Electronics";
+import { addWishListData } from "../../Redux/WaitList/action";
 
 export const ProductsDetails = () => {
   const [deliveryPin, setDeliveryPin] = useState("");
@@ -32,7 +33,7 @@ export const ProductsDetails = () => {
   }, []);
 
   const handleWishlist = (id) => {
-    // console.log(id);
+    dispatch(addWishListData({ product: id }));
   };
 
   const handleCart = (id) => {};

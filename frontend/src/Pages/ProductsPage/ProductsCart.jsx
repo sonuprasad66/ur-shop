@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { ImStarEmpty } from "react-icons/im";
 import { FaCartPlus } from "react-icons/fa";
 import { FiHeart } from "react-icons/fi";
 import { AiFillHeart } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProductsDetails } from "../../Redux/Products/action";
 import { useNavigate } from "react-router-dom";
 import { addCartData } from "../../Redux/Cart/cart.action";
 import axios from "axios";
+import {
+  addWishListData,
+  deleteWishListData,
+  getWishListData,
+} from "../../Redux/WaitList/action";
 
 export const ProductsCart = ({ products }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [toogle, setToogle] = useState(false);
-  const token = localStorage.getItem("token");
+
+  const { data } = useSelector((store) => store.wishlist);
+  useEffect(() => {
+    dispatch(getWishListData());
+  }, []);
 
   const handleDetails = (id) => {
     dispatch(getProductsDetails(id));
@@ -26,27 +35,13 @@ export const ProductsCart = ({ products }) => {
   };
 
   const addWishList = async (id) => {
-    await axios
-      .post(
-        "http://localhost:8080/wishlist",
-        { product: id },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((res) => setToogle(!toogle))
-      .catch((er) => console.log(er));
-    setToogle(!toogle);
+    console.log(id);
+    dispatch(addWishListData({ product: id }));
+  
   };
 
   const deleteWishlist = async (id) => {
-    console.log(id);
-    await axios
-      .delete(`http://localhost:8080/wishlist/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => setToogle(!toogle))
-      .catch((er) => console.log(er));
+    dispatch(deleteWishListData(id));
   };
 
   return (
@@ -68,7 +63,7 @@ export const ProductsCart = ({ products }) => {
 
         <Flex justifyContent={"space-between"} alignItems={"center"} mt={2}>
           <Heading size={"20px"}>{products.Brand}</Heading>
-          {toogle ? (
+          {data?.filter((el) => el.product._id === products._id).length==1 ? (
             <AiFillHeart
               fontSize={"20px"}
               cursor={"pointer"}

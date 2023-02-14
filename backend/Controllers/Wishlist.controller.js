@@ -37,17 +37,17 @@ const deleteFromWishlist = async (req, res) => {
   let data = await Wishlist.findOne({
     product: id,
   });
+  console.log(data);
   try {
     if (!data) {
       let deletedData = await Wishlist.findByIdAndDelete({ _id: id });
-      console.log("Yess");
       res.status(200).json({
         msg: "Product removed successfully from the wishlist",
         data: deletedData,
       });
     } else {
-      let deletedData = await Wishlist.deleteOne({ _id: id });
-      console.log("No");
+      let deletedData = await Wishlist.deleteOne({ product: id });
+      console.log(deletedData);
       res.status(200).json({
         msg: "Product removed successfully from the wishlist",
         data: deletedData,
