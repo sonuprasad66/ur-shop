@@ -46,7 +46,10 @@ const addToCart = async (req, res) => {
       });
     }
   } catch (e) {
-    res.status(500).send({ msg: e.message });
+    return res.json({
+      msg: e.message,
+      status: "info",
+    });
   }
 };
 

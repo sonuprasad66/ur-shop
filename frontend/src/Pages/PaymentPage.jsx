@@ -225,9 +225,9 @@ export const PaymentPage = () => {
                   <Text fontSize={"15"} fontWeight={"bold"}>
                     Pay on delivery
                   </Text>
-                  <Text fontSize={"15"} fontWeight={"bold"} color={"blue"}>
+                  {/* <Text fontSize={"15"} fontWeight={"bold"} color={"blue"}>
                     Total Amount :
-                  </Text>
+                  </Text> */}
                 </Flex>
                 <Flex alignItems={"center"} gap="10">
                   <Flex

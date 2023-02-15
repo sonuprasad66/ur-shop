@@ -51,7 +51,7 @@ export const ProductsCart = ({ products }) => {
         });
       } else {
         toast({
-          title: "Product Added Failed",
+          title: "You need to login first",
           status: "error",
           duration: 2000,
           isClosable: true,
