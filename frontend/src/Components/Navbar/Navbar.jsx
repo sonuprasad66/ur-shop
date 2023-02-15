@@ -44,21 +44,27 @@ export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const token = localStorage.getItem("token");
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
   const currentUser = useSelector((state) => state.AuthReducer.currentUser);
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+
   const cartData = useSelector((store) => store.cart.data);
   const wishlistData = useSelector((store) => store.wishlist.data);
 
-  useEffect(() => {}, []);
+  // useEffect(() => {
+  //   dispatch(getWishListData());
+  // }, []);
+  // useEffect(() => {
+  //   dispatch(getCartData());
+  // }, []);
 
   useEffect(() => {
     dispatch(getWishListData());
     dispatch(getCartData());
-  }, []);
-  useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
 
@@ -174,44 +180,57 @@ export const Navbar = () => {
                 </MenuList>
               )}
             </Menu>
-            <Link to="/wishlist">
-              <FiHeart size={25} cursor="pointer" />
-            </Link>
-            <Flex
-              visibility={["hidden", "hidden", "hidden", "visible"]}
-              height="20px"
-              width="15px"
-              borderRadius="25px"
-              padding="5px"
-              backgroundColor="red"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              position="absolute"
-              top="10px"
-              right="185px"
-            >
-              {wishlistData.length}
-            </Flex>
-            <Link to="/cart">
-              <HiOutlineShoppingCart size={25} cursor="pointer" />
-            </Link>
-            <Flex
-              visibility={["hidden", "hidden", "hidden", "visible"]}
-              height="20px"
-              width="15px"
-              borderRadius="25px"
-              padding="5px"
-              backgroundColor="red"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              position="absolute"
-              top="10px"
-              right="130px"
-            >
-              {cartData.length}
-            </Flex>
+
+            <Box position={"relative"}>
+              <Link to="/wishlist">
+                <FiHeart size={25} cursor="pointer" />
+              </Link>
+              {isAuth || token ? (
+                <Flex
+                  height="20px"
+                  width="15px"
+                  borderRadius="25px"
+                  padding="5px"
+                  backgroundColor="red"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  position="absolute"
+                  top="-10px"
+                  right="-8px"
+                >
+                  {wishlistData.length}
+                </Flex>
+              ) : (
+                ""
+              )}
+            </Box>
+
+            <Box position={"relative"}>
+              <Link to="/cart">
+                <HiOutlineShoppingCart size={25} cursor="pointer" />
+              </Link>
+              {isAuth || token ? (
+                <Flex
+                  height="20px"
+                  width="15px"
+                  borderRadius="25px"
+                  padding="5px"
+                  backgroundColor="red"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  position="absolute"
+                  top="-10px"
+                  right="-8px"
+                >
+                  {cartData.length}
+                </Flex>
+              ) : (
+                ""
+              )}
+            </Box>
+
             <Box>
               {colorMode === "light" ? (
                 <RiMoonClearLine

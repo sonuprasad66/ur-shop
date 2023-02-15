@@ -7,7 +7,7 @@ const initialState = {
   isLoading: false,
   isError: false,
   isAuth: false,
-  id: null
+  id: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -18,7 +18,7 @@ export const reducer = (state = initialState, action) => {
       return { ...state, isLoading: true, isError: false };
 
     case types.USER_LOGIN_SUCCESS:
-    localStorage.setItem("user",JSON.stringify(payload))
+      // localStorage.setItem("user", JSON.stringify(payload));
       return {
         ...state,
         isLoading: false,
@@ -26,7 +26,7 @@ export const reducer = (state = initialState, action) => {
         isAuth: true,
         token: payload.token,
         role: payload.role,
-        id:payload._id
+        id: payload._id,
       };
 
     case types.USER_LOGIN_FAILURE:
@@ -35,7 +35,7 @@ export const reducer = (state = initialState, action) => {
         isLoading: false,
         isError: true,
         isAuth: false,
-        token: [],
+        token: null,
       };
 
     case types.USER_SIGNUP_REQUEST:
