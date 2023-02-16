@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Box, Flex, Heading, Image, Text, useToast } from "@chakra-ui/react";
-import { ImStarEmpty } from "react-icons/im";
+import React, { useEffect } from "react";
 import { FiHeart } from "react-icons/fi";
-import { getProductsDetails } from "../../Redux/Products/action";
+import loader from "../../assets/abg.gif";
+import { AiFillHeart } from "react-icons/ai";
+import { ImStarEmpty } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { addCartData } from "../../Redux/Cart/cart.action";
+import { getProductsDetails } from "../../Redux/Products/action";
+import { Box, Flex, Heading, Image, Text, useToast } from "@chakra-ui/react";
 import {
   addWishListData,
   deleteWishListData,
   getWishListData,
 } from "../../Redux/WaitList/action";
-import { PrivateRoute } from "../../HOC/PrivateRoute";
 
 export const ProductsCart = ({ products }) => {
   const dispatch = useDispatch();
@@ -24,8 +24,6 @@ export const ProductsCart = ({ products }) => {
   }, []);
   const token = localStorage.getItem("token");
   const toast = useToast();
-
-  // const isLoading = useSelector((state) => state.cart.loading);
 
   const handleDetails = (id) => {
     dispatch(getProductsDetails(id));

@@ -1,10 +1,10 @@
-import { Box, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../Redux/Auth/action";
 import { getCartData } from "../Redux/Cart/cart.action";
 import CartCard from "./CartCard";
 import CartDetails from "./CartDetails";
+import loader from "../assets/abg.gif";
 
 const Cart = () => {
   const data = useSelector((store) => store.cart.data);
@@ -18,12 +18,19 @@ const Cart = () => {
     dispatch(getCartData());
   }, []);
 
-  // useEffect(() => {
-  //   dispatch(getProfile());
-  // }, []);
-
   if (data.length === 0) {
-    return <Heading>Data loading</Heading>;
+    return (
+      <>
+        <Flex
+          w={"100%"}
+          h={"80vh"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <Image src={loader} alt="loader" />
+        </Flex>
+      </>
+    );
   }
 
   return (

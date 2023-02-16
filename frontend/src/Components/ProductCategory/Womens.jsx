@@ -1,8 +1,9 @@
-import { Box, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ProductsCart } from "../../Pages/ProductsPage/ProductsCart";
 import { GET_ALL_WOMENS_PRODUCTS } from "../../Utils/Api";
+import loader from "../../assets/abg.gif";
 
 const getData = async () => {
   let res = await axios.get(GET_ALL_WOMENS_PRODUCTS);
@@ -15,6 +16,21 @@ export const Womens = () => {
   useEffect(() => {
     getData().then((res) => setData(res.data));
   }, []);
+
+  if (data.length === 0) {
+    return (
+      <>
+        <Flex
+          w={"100%"}
+          h={"80vh"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <Image src={loader} alt="loader" />
+        </Flex>
+      </>
+    );
+  }
 
   return (
     <Box>

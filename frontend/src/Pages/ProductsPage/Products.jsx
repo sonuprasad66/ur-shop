@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Flex,
+  Image,
   SimpleGrid,
   Text,
   useColorMode,
@@ -11,7 +12,7 @@ import "./Products.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
-
+import loader from "../../assets/abg.gif";
 import { getFilterProducts, getProducts } from "../../Redux/Products/action";
 import { Filter } from "./Filter";
 import { Pagination } from "./Pagination";
@@ -66,6 +67,21 @@ export const Products = () => {
     setOpenSort(true);
   };
 
+  if (products.length === 0 && filterProducts.length === 0) {
+    return (
+      <>
+        <Flex
+          w={"100%"}
+          h={"80vh"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <Image src={loader} alt="loader" />
+        </Flex>
+      </>
+    );
+  }
+
   return (
     <>
       <Box p={"20px"}>
@@ -113,15 +129,17 @@ export const Products = () => {
               </>
             ) : (
               <>
-                <div>
-                  <div>
-                    <img
-                      src="https://media.tenor.com/W6YUgyV84o0AAAAM/cry-crying.gif"
-                      alt="gif"
-                    />
-                    <h2>No Products Available</h2>
-                  </div>
-                </div>
+                <Flex
+                  flexDirection={"column"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                >
+                  <Image
+                    src="https://media.tenor.com/W6YUgyV84o0AAAAM/cry-crying.gif"
+                    alt="gif"
+                  />
+                  <Text>No Products Available</Text>
+                </Flex>
               </>
             )}
           </Box>
