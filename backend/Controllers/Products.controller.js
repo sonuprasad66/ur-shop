@@ -32,39 +32,45 @@ const getAllProductsDetails = async (req, res) => {
 // ---------------------All Filter Part--------------------------------
 
 const getAllFilterProducts = async (req, res) => {
-  const { brand, category, price, page, limit } = req.query;
-
+  const { brand, category, price } = req.query;
   let data;
-
-  if (brand && category) {
+  if (brand && category && price) {
+    let new_price = Number(price[price.length - 1]);
     data = await ProductsModel.find({
       Brand: { $in: [...brand] },
       category: { $in: [...category] },
-    })
-      .skip((page - 1) * limit)
-      .limit(limit);
+      Price: { $lte: new_price },
+    });
+  } else if (brand && category) {
+    data = await ProductsModel.find({
+      Brand: { $in: [...brand] },
+      category: { $in: [...category] },
+    });
+  } else if (brand && price) {
+    let new_price = Number(price[price.length - 1]);
+    data = await ProductsModel.find({
+      Brand: { $in: [...brand] },
+      Price: { $lte: new_price },
+    });
+  } else if (category && price) {
+    let new_price = Number(price[price.length - 1]);
+    data = await ProductsModel.find({
+      category: { $in: [...category] },
+      Price: { $lte: new_price },
+    });
   } else if (brand) {
     data = await ProductsModel.find({
       Brand: { $in: [...brand] },
-    })
-      .skip((page - 1) * limit)
-      .limit(limit);
+    });
   } else if (category) {
     data = await ProductsModel.find({
       category: { $in: [...category] },
-    })
-      .skip((page - 1) * limit)
-      .limit(limit);
+    });
   } else if (price) {
     let new_price = Number(price[price.length - 1]);
-    console.log(new_price);
-    data = await ProductsModel.find({ Price: { $lte: new_price } })
-      .skip((page - 1) * limit)
-      .limit(limit);
+    data = await ProductsModel.find({ Price: { $lte: new_price } });
   } else {
-    data = await ProductsModel.find()
-      .skip((page - 1) * limit)
-      .limit(limit);
+    data = await ProductsModel.find();
   }
   res.send(data);
 };

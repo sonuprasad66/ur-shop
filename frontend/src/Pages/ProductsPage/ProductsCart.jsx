@@ -12,6 +12,7 @@ import {
   deleteWishListData,
   getWishListData,
 } from "../../Redux/WaitList/action";
+import { PrivateRoute } from "../../HOC/PrivateRoute";
 
 export const ProductsCart = ({ products }) => {
   const dispatch = useDispatch();

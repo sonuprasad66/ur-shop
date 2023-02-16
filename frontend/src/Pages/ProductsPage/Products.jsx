@@ -34,6 +34,12 @@ export const Products = () => {
 
   const totalPage = Math.ceil(filterProducts.length / 8);
 
+  let limit = 8;
+  let start = (page - 1) * limit;
+  let end = start + limit;
+
+  let pageData = filterProducts.slice(start, end);
+
   useEffect(() => {
     dispatch(getProducts());
   }, []);
@@ -96,11 +102,11 @@ export const Products = () => {
             <Sidebar />
           </Box>
           <Box w={["100%", "100%", "100%", "85%"]} p={4}>
-            {filterProducts.length > 0 ? (
+            {pageData.length > 0 ? (
               <>
                 <SimpleGrid columns={[1, 2, 3, 4]} spacing="30px">
-                  {filterProducts &&
-                    filterProducts.map((item) => {
+                  {pageData &&
+                    pageData.map((item) => {
                       return <ProductsCart key={item._id} products={item} />;
                     })}
                 </SimpleGrid>
@@ -120,13 +126,13 @@ export const Products = () => {
             )}
           </Box>
         </Flex>
-        {/* <Box w={"100%"} p={5} border={"1px solid red"} mt={5}>
+        <Box w={"100%"} p={5} mt={5}>
           <Pagination
             page={page}
             total={Math.ceil(filterProducts.length / 8)}
             setPage={setPage}
           />
-        </Box> */}
+        </Box>
       </Box>
     </>
   );

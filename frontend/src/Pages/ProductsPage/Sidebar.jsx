@@ -140,7 +140,7 @@ export const Sidebar = () => {
             <input
               type="checkbox"
               value="500"
-              checked={price.includes("500")}
+              // checked={price.includes("500")}
               onChange={handleFilterPrice}
             />
             <label style={{ marginLeft: "5px" }}>Less ₹500</label>
@@ -149,7 +149,7 @@ export const Sidebar = () => {
             <input
               type="checkbox"
               value="1000"
-              checked={price.includes("1000")}
+              // checked={price.includes("1000")}
               onChange={handleFilterPrice}
             />
             <label style={{ marginLeft: "5px" }}>Less ₹1000</label>
@@ -158,7 +158,7 @@ export const Sidebar = () => {
             <input
               type="checkbox"
               value="2500"
-              checked={price.includes("2500")}
+              // checked={price.includes("2500")}
               onChange={handleFilterPrice}
             />
             <label style={{ marginLeft: "5px" }}>Less ₹2500</label>
@@ -167,7 +167,7 @@ export const Sidebar = () => {
             <input
               type="checkbox"
               value="5000"
-              checked={price.includes("2501")}
+              // checked={price.includes("2501")}
               onChange={handleFilterPrice}
             />
             <label style={{ marginLeft: "5px" }}>Less ₹5000</label>
