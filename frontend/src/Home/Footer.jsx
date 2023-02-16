@@ -1,98 +1,150 @@
-import { Box, HStack, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
-const Footer = () => {
+export const Footer = () => {
   return (
-    <Box bg="#14244B">
-      <SimpleGrid
-        columns={[1, 2, 3]}
-        fontSize="14px"
-        p={5}
-        w="80%"
-        m="auto"
-        py={"5%"}
-      >
-        <Box color="#fff" lineHeight="25px">
-          <Text lineHeight="30px" mb={2}>
-            <b>MOST POPULAR CATEGORIES</b>{" "}
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>Staples</Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Beverages
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Personal Care
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Home Care
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Fruits and Vegetables
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Baby Care{" "}
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Snacks & Branded Foods{" "}
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Dairy & Bakery{" "}
-          </Text>
-        </Box>
-        <Box lineHeight="25px" color={"#fff"}>
-          <Text lineHeight="30px" mb={2}>
-            <b>CUSTOMER SERVICES</b>{" "}
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>About Us</Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>FAQ</Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Terms and conditions
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Privacy policy
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            E-waste Policy
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Cancellation and return policy{" "}
-          </Text>
-          <Text _hover={{ color: "#ccdddd", cursor: "pointer" }}>
-            Shipping & Delivery Policy{" "}
-          </Text>
-        </Box>
-        <Box color={"#fff"}>
-          <Text lineHeight="30px" mb={2}>
-            <b>CONTACT US</b>
-          </Text>
-          <Text my={3}>
-            WhatsApp Us : <span style={{ color: "#14244B" }}>1234567890</span>{" "}
-          </Text>
-          <Text>
-            Call Us : <span style={{ color: "#14244B" }}>1234567890</span>{" "}
-          </Text>
-          <Text mb={3}>8:00 AM to 8:00 PM, 365 days</Text>
-          <Text>
-            Please note that you are accessing the BETA Version of{" "}
-            <span style={{ color: "#ccdddd" }}> www.urshop.com</span>
-          </Text>
-          <Text mt={3}>
-            Should you encounter any bugs, glitches, lack of functionality,
-            delayed deliveries, billing errors or other problems on the beta
-            website, please email us on{" "}
-            <span style={{ color: "#ccdddd" }}> cs@urshop.com</span>
-          </Text>
-          <Text lineHeight="30px" mb={2} mt={5}>
-            <b> DOWNLOAD APP</b>
-          </Text>
-          <HStack spacing={5}>
-            <Image src="https://www.jiomart.com/images/cms/wysiwyg/app-icons/play_store.png" />
-            <Image src="https://www.jiomart.com/images/cms/wysiwyg/app-icons/ios_store.png" />
-          </HStack>
-        </Box>
-      </SimpleGrid>
-    </Box>
+    <>
+      <Box w={"100%"} bg={"#14244b"} p={"60px 100px"}>
+        <SimpleGrid
+          columns={[1, 2, 3, 4]}
+          spacing="40px"
+          borderBottom={"1px solid grey"}
+          paddingBottom={"50px"}
+        >
+          <Box>
+            <Heading color={"white"} fontSize={"20px"}>
+              CUSTOMERS
+            </Heading>
+            <Text mt={3} color={"grey"}>
+              Contact Us
+            </Text>
+            <Text mt={1} color={"grey"}>
+              Track Order
+            </Text>
+            <Text mt={1} color={"grey"}>
+              Return Order
+            </Text>
+            <Text mt={1} color={"grey"}>
+              Cancel Order
+            </Text>
+          </Box>
+          <Box>
+            <Heading color={"white"} fontSize={"20px"}>
+              COMPANY
+            </Heading>
+            <Text mt={5} color={"grey"}>
+              About us
+            </Text>
+            <Text mt={1} color={"grey"}>
+              We're Hiring
+            </Text>
+            <Text mt={1} color={"grey"}>
+              Privacy Popcy
+            </Text>
+            <Text mt={1} color={"grey"}>
+              Terms and Condition
+            </Text>
+          </Box>
+          <Box>
+            <Heading color={"white"} fontSize={"20px"}>
+              CONTACTS
+            </Heading>
+            <Text
+              mt={5}
+              color={"white"}
+              className="fa-solid fa-location-dot"
+            ></Text>
+            <Text mt={1} color={"grey"}>
+              New Delhi, India
+            </Text>
+            {/* <Text mt={1} color={"grey"}>
+              India
+            </Text> */}
+            <Text mt={1} color={"grey"}>
+              +91 9999-999-999
+            </Text>
+            <Text mt={1} color={"grey"}>
+              info@urshop.com
+            </Text>
+          </Box>
+          <Box>
+            <Heading color={"white"} fontSize={"20px"}>
+              KEEP IN TOUCH
+            </Heading>
+            <Flex mt={3}>
+              <input
+                style={{
+                  outline: "none",
+                  border: "0px",
+                  width: "250px",
+                  heigth: "40px",
+                  paddingLeft: "10px",
+                }}
+                placeholder="Your Email"
+              />
+              <Box
+                justifyContent={"center"}
+                alignItems={"center"}
+                display={"flex"}
+                w={"50px"}
+                h={"40px"}
+                color={"white"}
+                bg={"#E94E1E"}
+                cursor={"pointer"}
+              >
+                <ChevronRightIcon />
+              </Box>
+            </Flex>
+            <Box mt={3}>
+              <Heading color={"white"} fontSize={"20px"}>
+                Follow Us
+              </Heading>
+              <Flex gap={1} mt={2}>
+                <Link to={"/team"}>
+                  <Image
+                    w={"40px"}
+                    h={"40px"}
+                    src="https://spaalon.com/images/twitter_icon.svg"
+                    alt="twitter"
+                  />
+                </Link>
+
+                <Link to={"/team"}>
+                  <Image
+                    w={"40px"}
+                    h={"40px"}
+                    src="https://spaalon.com/images/facebook_icon.svg"
+                    alt="facebook"
+                  />
+                </Link>
+
+                <Link to={"/team"}>
+                  <Image
+                    w={"40px"}
+                    h={"40px"}
+                    src="https://spaalon.com/images/instagram_icon.svg"
+                    alt="instagram"
+                  />
+                </Link>
+
+                <Link to={"/team"}>
+                  <Image
+                    w={"40px"}
+                    h={"40px"}
+                    src="https://spaalon.com/images/youtube_icon.svg"
+                    alt="youtube"
+                  />
+                </Link>
+              </Flex>
+            </Box>
+          </Box>
+        </SimpleGrid>
+        <Text color={"white"} textAlign={"right"} p={4}>
+          © 2020 UR-SHOP
+        </Text>
+      </Box>
+    </>
   );
 };
-
-export default Footer;
