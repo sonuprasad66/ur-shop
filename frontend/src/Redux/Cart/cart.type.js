@@ -13,3 +13,5 @@ export const DELETE_CART_SUCCESS = "/delete/cart/data/success";
 export const UPDATE_CART_LOADING = "/update/cart/data/loading";
 export const UPDATE_CART_ERROR = "/update/cart/data/error";
 export const UPDATE_CART_SUCCESS = "/update/get/cart/data/success";
+
+export const TOTAL_SUM_SUCCESS = "TOTAL_SUM_SUCCESS";

@@ -28,6 +28,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartData } from "../Redux/Cart/cart.action";
 import { getProfile } from "../Redux/Auth/action";
+import { TOTAL_SUM_SUCCESS } from "../Redux/Cart/cart.type";
 
 export const CheckoutPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -58,6 +59,14 @@ export const CheckoutPage = () => {
     onClose();
     setCoupan(true);
   };
+
+  useEffect(() => {
+    if (discount !== 0) {
+      dispatch({ type: TOTAL_SUM_SUCCESS, payload: discount });
+    } else {
+      dispatch({ type: TOTAL_SUM_SUCCESS, payload: totalsum });
+    }
+  }, [totalsum, discount]);
 
   return (
     <Box w={["90%", "80%", "80%", "70%"]} fontSize={14} m={"auto"} mb={10}>
