@@ -4,7 +4,15 @@ import { Link } from "react-router-dom";
 
 export const SubNavbar = () => {
   return (
-    <Box w="100%" color={"white"} h={50} bg={"#0D6DD7"}>
+    <Box
+      w="100%"
+      mt={"70px"}
+      position="fixed"
+      zIndex={1}
+      color={"white"}
+      h={50}
+      bg={"#0D6DD7"}
+    >
       <Flex
         h={"100%"}
         alignItems={"center"}
