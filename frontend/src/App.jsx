@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProfile } from "./Redux/Auth/action";
 import { Footer } from "./Home/Footer";
-
+import "./App.css";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -13,7 +13,7 @@ function App() {
   }, []);
   return (
     <>
-      <Box>
+      <Box className="font-face-pt">
         <Navbar />
         <AllRoutes />
         <Footer />

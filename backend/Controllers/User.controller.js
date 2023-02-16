@@ -73,8 +73,24 @@ const userProfile = async (req, res) => {
   res.send(currentUser);
 };
 
+const userAddress = async (req, res) => {
+  const { details, city, user_id, pincode, state, town } = req.body;
+
+  try {
+    const payload = { details, city, pincode, state, town };
+    await userModel.findOneAndUpdate(
+      { _id: user_id },
+      { address: payload },
+      { new: true }
+    );
+    res.send({ msg: "Address Added Successfully!", status: "success" });
+  } catch (er) {
+    res.send({ msg: "Address Added Failed!", status: "error" });
+  }
+};
 module.exports = {
   userSignup,
   userLogin,
   userProfile,
+  userAddress,
 };
