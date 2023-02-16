@@ -229,6 +229,17 @@ If you want to contact me, you can reach me through below handles.
  [![linkedin](https://img.shields.io/badge/sonuprasad66-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sonuprasad66/)
 [![Github](https://img.shields.io/badge/sonuprasad66-20232A?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/sonuprasad66/)
 
+
+ [![linkedin](https://img.shields.io/badge/GautamKumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gautam-kumar-b542621a7/)
+[![Github](https://img.shields.io/badge/Gautamkumar3-20232A?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/Gautamkumar3/)
+
+
+ [![linkedin](https://img.shields.io/badge/AmolGodse-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/amol-godse-patil/)
+[![Github](https://img.shields.io/badge/agodse21-20232A?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/agodse21)
+
+
+
+
 © 2022 Sonu Prasad
 
 
