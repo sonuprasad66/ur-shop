@@ -60,7 +60,7 @@ export const AddressModel = () => {
         variant="outline"
         onClick={onOpen}
       >
-        Change Address
+        Add New Address
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

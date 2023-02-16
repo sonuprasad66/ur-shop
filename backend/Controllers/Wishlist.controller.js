@@ -33,11 +33,9 @@ const addToWishlist = async (req, res) => {
 
 const deleteFromWishlist = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   let data = await Wishlist.findOne({
     product: id,
   });
-  console.log(data);
   try {
     if (!data) {
       let deletedData = await Wishlist.findByIdAndDelete({ _id: id });
@@ -47,7 +45,6 @@ const deleteFromWishlist = async (req, res) => {
       });
     } else {
       let deletedData = await Wishlist.deleteOne({ product: id });
-      console.log(deletedData);
       res.status(200).json({
         msg: "Product removed successfully from the wishlist",
         data: deletedData,

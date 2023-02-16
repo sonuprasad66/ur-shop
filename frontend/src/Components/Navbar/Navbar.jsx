@@ -135,7 +135,9 @@ export const Navbar = () => {
                     <Avatar
                       size={"sm"}
                       src={
-                        "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        currentUser.profile_pic
+                          ? `${currentUser.profile_pic}`
+                          : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                       }
                     />
                     <Text
