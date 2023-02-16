@@ -96,10 +96,20 @@ export const Products = () => {
           <Filter />
         </Box>
         <Box className={"open_mobile"}>
-          <Button bg={"#14244b"} color={"white"} onClick={handleSidebar}>
+          <Button
+            bg={"#14244b"}
+            _hover={"none"}
+            color={"white"}
+            onClick={handleSidebar}
+          >
             Open Filter
           </Button>
-          <Button bg={"#14244b"} color={"white"} onClick={handleOpenSort}>
+          <Button
+            bg={"#14244b"}
+            _hover={"none"}
+            color={"white"}
+            onClick={handleOpenSort}
+          >
             Open Sort
           </Button>
         </Box>
