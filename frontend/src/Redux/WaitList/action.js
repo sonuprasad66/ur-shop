@@ -21,7 +21,6 @@ export const getWishListData = () => async (dispatch) => {
     });
     return dispatch({ type: GET_WISHLIST_SUCCESS, payload: res.data });
   } catch (er) {
-    console.log(er.message);
     return dispatch({ type: GET_WISHLIST_ERROR });
   }
 };
@@ -36,7 +35,6 @@ export const addWishListData = (data) => async (dispatch) => {
     dispatch(getWishListData());
     return res.data;
   } catch (er) {
-    console.log(er.message);
     return dispatch({ type: POST_WISHLIST_ERROR });
   }
 };
@@ -51,7 +49,6 @@ export const deleteWishListData = (id) => async (dispatch) => {
     dispatch(getWishListData());
     return res.data;
   } catch (er) {
-    console.log(er.message);
     return dispatch({ type: DELETE_WISHLIST_ERROR });
   }
 };

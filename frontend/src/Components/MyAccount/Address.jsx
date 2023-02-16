@@ -4,7 +4,7 @@ import React from "react";
 export const Address = () => {
   return (
     <>
-      <Box>Address</Box>
+      <Box>You Can Update your Address Very Soon</Box>
     </>
   );
 };

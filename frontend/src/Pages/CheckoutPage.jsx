@@ -46,7 +46,7 @@ export const CheckoutPage = () => {
     dispatch(getCartData());
   }, []);
 
-  const address = "Aurangabad,maharashtra-431001";
+  const address = "Default Address ";
 
   let totalsum = 0;
   for (let i = 0; i < data.length; i++) {

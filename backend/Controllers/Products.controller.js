@@ -32,28 +32,39 @@ const getAllProductsDetails = async (req, res) => {
 // ---------------------All Filter Part--------------------------------
 
 const getAllFilterProducts = async (req, res) => {
-  const { brand, category, price } = req.query;
+  const { brand, category, price, page, limit } = req.query;
+
   let data;
 
   if (brand && category) {
     data = await ProductsModel.find({
       Brand: { $in: [...brand] },
       category: { $in: [...category] },
-    });
+    })
+      .skip((page - 1) * limit)
+      .limit(limit);
   } else if (brand) {
     data = await ProductsModel.find({
       Brand: { $in: [...brand] },
-    });
+    })
+      .skip((page - 1) * limit)
+      .limit(limit);
   } else if (category) {
     data = await ProductsModel.find({
       category: { $in: [...category] },
-    });
+    })
+      .skip((page - 1) * limit)
+      .limit(limit);
   } else if (price) {
-    let new_price = Number(price[0]);
-    data = await ProductsModel.find({ Price: { $lte: new_price } });
-    // data = await ProductsModel.find();
+    let new_price = Number(price[price.length - 1]);
+    console.log(new_price);
+    data = await ProductsModel.find({ Price: { $lte: new_price } })
+      .skip((page - 1) * limit)
+      .limit(limit);
   } else {
-    data = await ProductsModel.find();
+    data = await ProductsModel.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
   }
   res.send(data);
 };

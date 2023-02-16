@@ -22,6 +22,7 @@ export const Products = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openSort, setOpenSort] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
+  const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -30,6 +31,8 @@ export const Products = () => {
   const filterProducts = useSelector(
     (state) => state.ProductsReducer.filterProducts
   );
+
+  const totalPage = Math.ceil(filterProducts.length / 8);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -42,12 +45,13 @@ export const Products = () => {
           brand: searchParams.getAll("brand"),
           category: searchParams.getAll("category"),
           price: searchParams.getAll("price"),
+          page: page,
         },
       };
       // console.log(getProductsParams);
       dispatch(getFilterProducts(getProductsParams));
     }
-  }, [location.search]);
+  }, [location.search, page]);
 
   const handleSidebar = () => {
     setOpenMenu(true);
@@ -116,9 +120,13 @@ export const Products = () => {
             )}
           </Box>
         </Flex>
-        <Box w={"100%"} p={5} border={"1px solid red"} mt={5}>
-          <Pagination />
-        </Box>
+        {/* <Box w={"100%"} p={5} border={"1px solid red"} mt={5}>
+          <Pagination
+            page={page}
+            total={Math.ceil(filterProducts.length / 8)}
+            setPage={setPage}
+          />
+        </Box> */}
       </Box>
     </>
   );
