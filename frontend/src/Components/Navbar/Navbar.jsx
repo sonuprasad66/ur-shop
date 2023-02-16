@@ -55,13 +55,6 @@ export const Navbar = () => {
   const cartData = useSelector((store) => store.cart.data);
   const wishlistData = useSelector((store) => store.wishlist.data);
 
-  // useEffect(() => {
-  //   dispatch(getWishListData());
-  // }, []);
-  // useEffect(() => {
-  //   dispatch(getCartData());
-  // }, []);
-
   useEffect(() => {
     dispatch(getWishListData());
     dispatch(getCartData());
@@ -74,6 +67,10 @@ export const Navbar = () => {
   return (
     <>
       <Box
+      top={0}
+        w="100%"
+        position="fixed"
+        zIndex={1}
         h={"70px"}
         bg={colorMode === "light" ? "#14244B" : "#14244B"}
         color={"white"}

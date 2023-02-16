@@ -16,10 +16,12 @@ import { Womens } from "../Components/ProductCategory/Womens";
 import { Electronics } from "../Components/ProductCategory/Electronics";
 import { ProductsDetails } from "../Pages/ProductsDetails/ProductsDetails";
 import { PrivateRoute } from "../HOC/PrivateRoute";
+import { Box } from "@chakra-ui/react";
 
 export const AllRoutes = () => {
   return (
-    <>
+    <Box mt={["70","70","121","121"]}>
+    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mens" element={<Mens />} />
@@ -52,6 +54,6 @@ export const AllRoutes = () => {
         <Route path="/electronics" element={<Electronics />} />
         <Route path="/products/:id" element={<ProductsDetails />} />
       </Routes>
-    </>
+    </Box>
   );
 };

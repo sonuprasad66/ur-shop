@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <>
-      <Box w={"100%"} bg={"#14244b"} p={"60px 100px"}>
+      <Box w={"100%"} mt={50} bg={"#14244b"} p={"60px 100px"}>
         <SimpleGrid
           columns={[1, 2, 3, 4]}
           spacing="40px"
