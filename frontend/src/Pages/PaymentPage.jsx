@@ -32,6 +32,7 @@ import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { GooglePayBtn } from "../Components/GooglePayBtn";
 import logo from "../../public/logo.jpg";
+import { useSelector } from "react-redux";
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -132,6 +133,10 @@ export const PaymentPage = () => {
     paymentObject.open();
   }
 
+  const totalSum = useSelector((store) => store.cart.totalSum);
+
+  console.log(totalSum);
+
   return (
     <Box w={["90%", "70%", "70%", "60%"]} fontSize={14} m={"auto"} mb={10}>
       <Flex mb={5} alignItems={"center"} mt={5} justifyContent={"center"}>
@@ -225,9 +230,9 @@ export const PaymentPage = () => {
                   <Text fontSize={"15"} fontWeight={"bold"}>
                     Pay on delivery
                   </Text>
-                  {/* <Text fontSize={"15"} fontWeight={"bold"} color={"blue"}>
-                    Total Amount :
-                  </Text> */}
+                  <Text fontSize={"15"} fontWeight={"bold"} color={"blue"}>
+                    Total Amount : {totalSum}
+                  </Text>
                 </Flex>
                 <Flex alignItems={"center"} gap="10">
                   <Flex
