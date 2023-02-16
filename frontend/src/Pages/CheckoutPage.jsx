@@ -29,6 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCartData } from "../Redux/Cart/cart.action";
 import { getProfile } from "../Redux/Auth/action";
 import { TOTAL_SUM_SUCCESS } from "../Redux/Cart/cart.type";
+import { AddressModel } from "../Components/AddressModel";
 
 export const CheckoutPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -39,6 +40,7 @@ export const CheckoutPage = () => {
   const dispatch = useDispatch();
   const data = useSelector((store) => store.cart.data);
   const currentUser = useSelector((state) => state.AuthReducer.currentUser);
+  const isLoading = useSelector((state) => state.AuthReducer.isLoading);
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
@@ -46,8 +48,10 @@ export const CheckoutPage = () => {
   useEffect(() => {
     dispatch(getCartData());
   }, []);
-
-  const address = "Default Address ";
+  let address;
+  if (currentUser.address) {
+    address = `${currentUser?.address.details},${currentUser?.address.town},${currentUser?.address.city},${currentUser?.address.state}-${currentUser?.address.pincode}`;
+  }
 
   let totalsum = 0;
   for (let i = 0; i < data.length; i++) {
@@ -89,23 +93,17 @@ export const CheckoutPage = () => {
             justifyContent={"space-between"}
             flexDirection={["column", "column", "column", "row"]}
             gap="5"
+            alignItems={"center"}
           >
-            <Box>
+            <Box width={"70%"}>
               <Text>
                 Deliver to: <b>{currentUser.name} ,</b>
               </Text>
-              <Text>{address}</Text>
+              <Text mt={2} fontSize={13}>
+                {address}
+              </Text>
             </Box>
-            <Link to={"/address"}>
-              <Button
-                fontSize={14}
-                borderRadius={0}
-                colorScheme="blue"
-                variant="outline"
-              >
-                Change Address
-              </Button>
-            </Link>
+            <AddressModel />
           </Flex>
           <Box
             boxShadow={"lg"}
@@ -155,10 +153,12 @@ export const CheckoutPage = () => {
                     mt={5}
                     p={2}
                     alignItems={"center"}
-                    gap={2}
+                    gap={10}
+                  pl={10}
                   >
                     <Image
-                      w={["30%", "30%", "20%", "20%"]}
+                      w={["35%", "35%", "22%", "22%"]}
+                      h={["300px", "300px", "200px", "200px"]}
                       src={item.product.Image1}
                       alt="img"
                     />
@@ -166,14 +166,7 @@ export const CheckoutPage = () => {
                       <Text fontWeight={"bold"}>{item.product.Brand}</Text>
                       <Text>{item.product.Product_Title}</Text>
                       <Flex mt={2} mb={2} gap={5} alignItems="center">
-                        <Box
-                          pl={"2"}
-                          pr="2"
-                          bg="#f5f5f6"
-                          color={colorMode === "light" ? "black" : "black"}
-                        >
-                          <Text fontWeight={"bold"}>Size:</Text>
-                        </Box>
+                      
                         <Box
                           pl={"2"}
                           pr="2"

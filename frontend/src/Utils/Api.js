@@ -13,3 +13,4 @@ export const GET_PRODUCT_SORT_BY_PRICE = `${PORT}/getAllProductsSortByPrice`;
 export const GET_PRODUCT_SORT_BY_RATING = `${PORT}/getAllProductsSortByRating`;
 export const GET_ALL_ELECTRONICS_PRODUCTS = `${PORT}/getAllProductsElectronics`;
 export const GET_PRODUCT_SORT_BY_DISCOUNT = `${PORT}/getAllProductsSortByDiscount`;
+export const ADD_NEW_ADDRESS = `${PORT}/address`;
