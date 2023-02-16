@@ -46,7 +46,7 @@
 
 
 
-<h3 align="center"><a href="https://github.com/sonuprasad66/ur-shop/"><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://ur-shop-seven.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
 
 
 
