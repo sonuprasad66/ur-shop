@@ -52,7 +52,7 @@ export const userLogin = (payload) => (dispatch) => {
 };
 
 export const getProfile = (payload) => (dispatch) => {
-  dispatch({ type: types.USER_LOGIN_REQUEST });
+  // dispatch({ type: types.USER_LOGIN_REQUEST });
   return axios
     .get(USER_PROFILE, {
       headers: { Authorization: `Bearer ${token}` },

@@ -101,6 +101,10 @@ export const PaymentPage = () => {
     return () => clearTimeout(timer);
   };
 
+  const totalSum = useSelector((store) => store.cart.totalSum);
+
+  // console.log(totalSum);
+
   async function displayRazorpay() {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -114,7 +118,7 @@ export const PaymentPage = () => {
     const options = {
       key: "rzp_test_MycFElKbWAkW7X",
       currency: "INR",
-      amount: 3000,
+      amount: totalSum * 100,
       // order_id: data.id,
       name: "UR SHOP",
       description: "Is",
@@ -132,10 +136,6 @@ export const PaymentPage = () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   }
-
-  const totalSum = useSelector((store) => store.cart.totalSum);
-
-  console.log(totalSum);
 
   return (
     <Box w={["90%", "70%", "70%", "60%"]} fontSize={14} m={"auto"} mb={10}>
@@ -306,7 +306,7 @@ export const PaymentPage = () => {
                 </Flex>
               </TabPanel>
               <TabPanel>
-                <p>three!</p>
+                <p>Razorpay is Loading...</p>
               </TabPanel>
             </TabPanels>
           </Box>

@@ -64,13 +64,18 @@ export const Navbar = () => {
   const closeButton = () => {
     onclose();
   };
+
+  const handleMyAccount = () => {
+    alert("Your Account Details are comming soon!");
+  };
+
   return (
     <>
       <Box
-      top={0}
+        top={0}
         w="100%"
         position="fixed"
-        zIndex={1}
+        zIndex={500}
         h={"70px"}
         bg={colorMode === "light" ? "#14244B" : "#14244B"}
         color={"white"}
@@ -163,11 +168,19 @@ export const Navbar = () => {
                     visibility={["visible", "hidden", "hidden", "hidden"]}
                   ></MenuGroup>
                   <MenuItem>
-                    <HiOutlineUser size={25} /> <Text ml={2}> My Account</Text>
+                    <HiOutlineUser size={25} />
+
+                    <Text ml={2} onClick={handleMyAccount}>
+                      {" "}
+                      My Account
+                    </Text>
                   </MenuItem>
                   <MenuItem>
                     <BsHandbag size={25} />
-                    <Text ml={2}> My Orders</Text>
+                    <Link to={"/cart"}>
+                      {" "}
+                      <Text ml={2}> My Orders</Text>
+                    </Link>
                   </MenuItem>
 
                   <MenuItem>
