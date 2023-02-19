@@ -29,6 +29,9 @@ export const Login = () => {
   const navigate = useNavigate();
   const toast = useToast();
   const isLoading = useSelector((state) => state.AuthReducer.isLoading);
+
+  console.log(isLoading);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoginData({

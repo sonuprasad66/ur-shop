@@ -8,7 +8,7 @@ export const SubNavbar = () => {
       w="100%"
       mt={"70px"}
       position="fixed"
-      zIndex={1}
+      zIndex={99}
       color={"white"}
       h={50}
       bg={"#0D6DD7"}
