@@ -51,6 +51,8 @@
 
 
 
+![productsDark](https://user-images.githubusercontent.com/101389401/219954115-6567bd89-10e0-471a-9d4c-e236523e883b.png)
+
 <!--- Nike Clone is MERN Stack e-commerce web application that allows you to buy shoes & clothes online with payment gateway integration. It has a variety of categories, just visit the product listing page and you will see all the products, apply filters as per your need and in just a few clicks you can buy any products from the website. This project is just for educational purpose -->
 
 
@@ -95,30 +97,31 @@
 ## Glimpses of Nike-Clone 🙈 :
 
 
-<!-- <table>
+ <table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/91532881/175955122-200a6ccb-54a5-4f39-9bc2-cd3ba3a4d102.jpeg" alt="home" /></td>
-    <td><img src="https://user-images.githubusercontent.com/91532881/175955109-b51e3e81-4cd8-4f00-a8cd-873c82882a15.png" alt="coupons" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219953501-85e07783-1aac-4119-bfa3-40370d5f785a.png" alt="homePage" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954405-3a270910-f538-42ce-8188-412df202e305.png" alt="Product" /></td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/91532881/175955141-44aefea0-a9ee-4c3a-93e0-094ca9214e54.jpeg" alt="signup" /></td>
-    <td><img src="https://user-images.githubusercontent.com/91532881/175955129-e5392377-e72a-4868-883f-5a244fc9bc87.jpeg" alt="login" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954115-6567bd89-10e0-471a-9d4c-e236523e883b.png" alt="productDark" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954622-abf957ae-63e3-4ac1-8056-8c6f3e23c8a5.png" alt="Details" /></td>
+  </tr>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954651-03897359-75c5-4b74-b8bf-f520c41f982a.png" alt="detailsDark" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954652-b00a01d4-4f51-4071-a838-195092f75434.png" alt="cart" /></td>
+  </tr>
+   <tr>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954676-4c7b9c50-c5a5-43aa-9838-53998ce773a5.png" alt="checkout" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954681-b5ac53d3-d0c7-4e12-bcce-17a17ca58fe4.png" alt="payment" /></td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/91532881/175955097-9fe2e5a5-b4f4-4c1f-beb7-4080186e5a17.jpeg" alt="allProducts" /></td>
-    <td><img src="https://user-images.githubusercontent.com/91532881/175957017-3530fe22-46ae-4bf7-a645-55f7a5f25ed9.jpeg" alt="men" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954708-6aed7a5f-0879-42e0-9c98-c9e62bd62122.png" alt="login" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954713-4f49c339-5e43-4511-9fe7-e68fb2c5d792.png" alt="signup" /></td>
+  </tr>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954750-0f347806-cd3c-4da7-8d61-cb7cc300d702.png" alt="footer" /></td>
+    <td><img src="https://user-images.githubusercontent.com/101389401/219954753-6c7cbb53-51b9-4f85-8a0e-5a203a677889.png" alt="team" /></td>
   </tr>
  
-</table> -->
-
-<br />
-
-## Test Coupon Codes
-
-<!-- NIKE5 (for 5% Off) -->
-
-
-
+</table> 
 
 <br />
 
