@@ -116,7 +116,7 @@ export const PaymentPage = () => {
     }
 
     const options = {
-      key: "rzp_test_MycFElKbWAkW7X",
+      key: "rzp_test_jBBhchWsQ7daLQ",
       currency: "INR",
       amount: totalSum * 100,
       // order_id: data.id,
