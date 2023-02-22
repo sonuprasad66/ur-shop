@@ -100,7 +100,7 @@ export const PaymentPage = () => {
     }, 1000);
     return () => clearTimeout(timer);
   };
-
+  const currentUser = useSelector((state) => state.AuthReducer.currentUser);
   const totalSum = useSelector((store) => store.cart.totalSum);
 
   // console.log(totalSum);
@@ -116,7 +116,7 @@ export const PaymentPage = () => {
     }
 
     const options = {
-      key: "rzp_test_MycFElKbWAkW7X",
+      key: "rzp_test_jBBhchWsQ7daLQ",
       currency: "INR",
       amount: totalSum * 100,
       // order_id: data.id,
@@ -124,13 +124,19 @@ export const PaymentPage = () => {
       description: "Is",
       image: logo,
       handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        // alert(response.razorpay_payment_id);
+        toast({
+          title: `Your payment ID ${response.razorpay_payment_id}`,
+          status: "success",
+          position: "top",
+          duration: 3000,
+        });
+        navigate("/");
       },
       prefill: {
-        email: "sdfdsjfh2@ndsfdf.com",
-        phone_number: "9899999999",
+        name: currentUser.name,
+        email: currentUser.email,
+        contact: currentUser.mobile_number,
       },
     };
     const paymentObject = new window.Razorpay(options);
