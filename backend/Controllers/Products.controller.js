@@ -99,6 +99,22 @@ const getAllDataSortByRating = async (req, res) => {
   res.send(data);
 };
 
+const searchProductByName = async (req, res) => {
+  let keyword = {};
+  if (req.query.q) {
+    keyword = req.query.q;
+  }
+  try {
+    const AllProducts = await ProductsModel.find({
+      Product_Title: { $regex: keyword, $options: "i" },
+    });
+    console.log(AllProducts);
+    return res.status(200).send(AllProducts);
+  } catch (er) {
+    return res.status(403).send(er.message);
+  }
+};
+
 module.exports = {
   getAllProducts,
   getAllFilterProducts,
@@ -110,4 +126,5 @@ module.exports = {
   getAllDataSortByPrice,
   getAllDataSortByDiscount,
   getAllDataSortByRating,
+  searchProductByName,
 };

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCartData } from "../Redux/Cart/cart.action";
 import CartCard from "./CartCard";
 import CartDetails from "./CartDetails";
+import EmptyCart from "./EmptyCart";
 import loader from "../assets/abg.gif";
 
 const Cart = () => {
@@ -19,8 +20,10 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getCartData());
   }, []);
+  console.log(data);
 
   if (data.length === 0) {
+    return <EmptyCart />;
     return (
       <>
         <Flex

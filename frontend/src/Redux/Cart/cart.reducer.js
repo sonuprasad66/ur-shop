@@ -65,6 +65,8 @@ export const cartReducer = (state = initialState, { type, payload }) => {
         data: [],
       };
     case DELETE_CART_SUCCESS:
+        console.log(data, "data");
+        console.log(payload, "Payload");
       return {
         ...state,
         loading: false,

@@ -11,6 +11,7 @@ const {
   getAllDataSortByPrice,
   getAllDataSortByDiscount,
   getAllDataSortByRating,
+  searchProductByName,
 } = require("../Controllers/Products.controller");
 
 productsRouter.get("/getAllProducts", getAllProducts);
@@ -29,6 +30,10 @@ productsRouter.get("/getAllProductsElectronics", getAllProductsElectronics);
 productsRouter.get("/getAllProductsSortByPrice", getAllDataSortByPrice);
 productsRouter.get("/getAllProductsSortByDiscount", getAllDataSortByDiscount);
 productsRouter.get("/getAllProductsSortByRating", getAllDataSortByRating);
+
+// ############### Search api #################
+
+productsRouter.get("/products/search", searchProductByName);
 
 module.exports = {
   productsRouter,
