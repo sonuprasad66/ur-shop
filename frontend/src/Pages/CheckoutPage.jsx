@@ -27,6 +27,9 @@ import { TfiFaceSad } from "react-icons/tfi";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartData } from "../Redux/Cart/cart.action";
+import { getProfile } from "../Redux/Auth/action";
+import { TOTAL_SUM_SUCCESS } from "../Redux/Cart/cart.type";
+import { AddressModel } from "../Components/AddressModel";
 
 export const CheckoutPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -34,53 +37,25 @@ export const CheckoutPage = () => {
   const [coupan, setCoupan] = useState(false);
   const [discount, setDiscount] = useState(0);
 
-  const cartData = useSelector((store) => store.cart.data);
   const dispatch = useDispatch();
-  console.log(cartData)
+  const data = useSelector((store) => store.cart.data);
+  const currentUser = useSelector((state) => state.AuthReducer.currentUser);
+  const isLoading = useSelector((state) => state.AuthReducer.isLoading);
+  useEffect(() => {
+    dispatch(getProfile());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getCartData());
   }, []);
-
-  const address = "Aurangabad,maharashtra-431001";
-  const user = "AMol";
-
-  const data = [
-    {
-      item_no: 1,
-      product_details: {
-        product_img:
-          "https://images.asos-media.com/products/babyliss-super-power-pro-2400-hair-dryer-uk-plug/12602527-1-nocolour?$n_480w$&wid=476&fit=constrain",
-        product_price: "63.00",
-        product_name: "BaByliss Super Power Pro 2400 Hair Dryer UK Plug",
-        product_color: "No color",
-        brand: "punma",
-        size: "L",
-        quantity: 2,
-      },
-      _id: "63d78d82a3d0363b4d7af392",
-    },
-    {
-      item_no: 2,
-      product_details: {
-        product_img:
-          "https://images.asos-media.com/products/babyliss-super-power-pro-2400-hair-dryer-uk-plug/12602527-1-nocolour?$n_480w$&wid=476&fit=constrain",
-        product_price: "63.00",
-        product_name: "BaByliss Super Power Pro 2400 Hair Dryer UK Plug",
-        product_color: "No color",
-        brand: "punma",
-        size: "L",
-        quantity: 1,
-      },
-      _id: "63d78d82a3d0363b4d7af393",
-    },
-  ];
+  let address;
+  if (currentUser.address) {
+    address = `${currentUser?.address.details},${currentUser?.address.town},${currentUser?.address.city},${currentUser?.address.state}-${currentUser?.address.pincode}`;
+  }
 
   let totalsum = 0;
   for (let i = 0; i < data.length; i++) {
-    totalsum +=
-      Number(data[i].product_details.quantity) *
-      Number(data[i].product_details.product_price);
+    totalsum += Number(data[i].qty) * Number(data[i].product.Price);
   }
 
   const HandleCoupan = () => {
@@ -88,6 +63,14 @@ export const CheckoutPage = () => {
     onClose();
     setCoupan(true);
   };
+
+  useEffect(() => {
+    if (discount !== 0) {
+      dispatch({ type: TOTAL_SUM_SUCCESS, payload: discount });
+    } else {
+      dispatch({ type: TOTAL_SUM_SUCCESS, payload: totalsum });
+    }
+  }, [totalsum, discount]);
 
   return (
     <Box w={["90%", "80%", "80%", "70%"]} fontSize={14} m={"auto"} mb={10}>
@@ -110,23 +93,17 @@ export const CheckoutPage = () => {
             justifyContent={"space-between"}
             flexDirection={["column", "column", "column", "row"]}
             gap="5"
+            alignItems={"center"}
           >
-            <Box>
+            <Box width={"70%"}>
               <Text>
-                Deliver to: <b>{user} ,</b>
+                Deliver to: <b>{currentUser.name} ,</b>
               </Text>
-              <Text>{address}</Text>
+              <Text mt={2} fontSize={13}>
+                {address}
+              </Text>
             </Box>
-            <Link to={"/address"}>
-              <Button
-                fontSize={14}
-                borderRadius={0}
-                colorScheme="blue"
-                variant="outline"
-              >
-                Change Address
-              </Button>
-            </Link>
+            <AddressModel />
           </Flex>
           <Box
             boxShadow={"lg"}
@@ -166,7 +143,7 @@ export const CheckoutPage = () => {
               data.map((item) => (
                 <>
                   <Flex
-                    key={item._id}
+                    key={item.product._id}
                     boxShadow={"lg"}
                     border={
                       colorMode === "light"
@@ -176,51 +153,36 @@ export const CheckoutPage = () => {
                     mt={5}
                     p={2}
                     alignItems={"center"}
-                    gap={2}
+                    gap={10}
+                  pl={10}
                   >
                     <Image
-                      w={["30%", "30%", "20%", "20%"]}
-                      src={item.product_details.product_img}
+                      w={["35%", "35%", "22%", "22%"]}
+                      h={["300px", "300px", "200px", "200px"]}
+                      src={item.product.Image1}
                       alt="img"
                     />
                     <Box>
-                      <Text fontWeight={"bold"}>
-                        {item.product_details.brand}
-                      </Text>
-                      <Text>{item.product_details.product_name}</Text>
+                      <Text fontWeight={"bold"}>{item.product.Brand}</Text>
+                      <Text>{item.product.Product_Title}</Text>
                       <Flex mt={2} mb={2} gap={5} alignItems="center">
+                      
                         <Box
                           pl={"2"}
                           pr="2"
                           bg="#f5f5f6"
                           color={colorMode === "light" ? "black" : "black"}
                         >
-                          <Text fontWeight={"bold"}>
-                            Size: {item.product_details.size}
-                          </Text>
-                        </Box>
-                        <Box
-                          pl={"2"}
-                          pr="2"
-                          bg="#f5f5f6"
-                          color={colorMode === "light" ? "black" : "black"}
-                        >
-                          <Text fontWeight={"bold"}>
-                            Qty: {item.product_details.quantity}
-                          </Text>
+                          <Text fontWeight={"bold"}>Qty: {item.qty}</Text>
                         </Box>
                       </Flex>
                       <Flex alignItems={"center"}>
                         <FaRupeeSign />
-                        <Text fontWeight={"bold"}>
-                          {item.product_details.product_price}
-                        </Text>
+                        <Text fontWeight={"bold"}>{item.product.Price}</Text>
                         <s>
                           <Flex ml={5} color="#FF3F6C" alignItems={"center"}>
                             <BiRupee />
-                            <Text fontSize={12}>
-                              {item.product_details.product_price}
-                            </Text>
+                            <Text fontSize={12}>{item.product.MRP}</Text>
                           </Flex>
                         </s>
                       </Flex>
@@ -347,12 +309,12 @@ export const CheckoutPage = () => {
             <Text>Total Amount</Text>
             {coupan && (
               <Box w="50%">
-                <Text textAlign={"center"} fontSize={"10"} color={"red"}>
-                  you got 30% discount on Total Amount. your offer price is :
+                <Text textAlign={"center"} fontSize={"10"} color={"green"}>
+                  you got 30% discount on Total Amount. Now you need to pay
                 </Text>
               </Box>
             )}
-            <Text color={coupan && "red"}>
+            <Text color={coupan && "blue"}>
               &#8377; {discount !== 0 ? discount : totalsum}
             </Text>
           </Flex>

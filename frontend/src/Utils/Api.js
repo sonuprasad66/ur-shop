@@ -1,8 +1,10 @@
-export const PORT = "http://localhost:8080";
+export const PORT = "https://ur-shop.onrender.com";
 export const CART_API = `${PORT}/cart`;
 export const USER_LOGIN = `${PORT}/login`;
 export const USER_SIGNUP = `${PORT}/signup`;
 export const USER_PROFILE = `${PORT}/profile`;
+export const WISHLIST_DATA = `${PORT}/wishlist`;
+export const ADD_NEW_ADDRESS = `${PORT}/address`;
 export const GET_ALL_PRODUCTS = `${PORT}/getAllProducts`;
 export const GET_ALL_KIDS_PRODUCTS = `${PORT}/getAllProductsKids`;
 export const GET_ALL_MENS_PRODUCTS = `${PORT}/getAllProductsMens`;

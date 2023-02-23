@@ -1,6 +1,27 @@
 import * as types from "./actionTypes";
 import axios from "axios";
-import { USER_LOGIN, USER_SIGNUP, USER_PROFILE } from "../.././Utils/Api";
+import {
+  USER_LOGIN,
+  ADD_NEW_ADDRESS,
+  USER_SIGNUP,
+  USER_PROFILE,
+} from "../.././Utils/Api";
+const token = localStorage.getItem("token");
+
+export const AddNewAddress = (payload) => (dispatch) => {
+  dispatch({ type: types.USER_ADDRESS_REQUEST });
+  return axios
+    .patch(ADD_NEW_ADDRESS, payload, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((res) => {
+      return dispatch({ type: types.USER_ADDRESS_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      console.log(err);
+      return dispatch({ type: types.USER_ADDRESS_FAILURE, payload: err });
+    });
+};
 
 export const userSignup = (payload) => (dispatch) => {
   dispatch({ type: types.USER_SIGNUP_REQUEST });
@@ -31,7 +52,7 @@ export const userLogin = (payload) => (dispatch) => {
 };
 
 export const getProfile = (payload) => (dispatch) => {
-  const token = localStorage.getItem("token");
+  // dispatch({ type: types.USER_LOGIN_REQUEST });
   return axios
     .get(USER_PROFILE, {
       headers: { Authorization: `Bearer ${token}` },

@@ -122,7 +122,12 @@ export const Filter = () => {
         alignItems={"center"}
       >
         <Box>
-          <Button bg={"#14244b"} color={"white"} onClick={handleReset}>
+          <Button
+            _hover={"none"}
+            bg={"#14244b"}
+            color={"white"}
+            onClick={handleReset}
+          >
             Reset All Filters
           </Button>
         </Box>

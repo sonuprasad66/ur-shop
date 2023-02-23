@@ -15,21 +15,38 @@ import { MyAccount } from "../Components/MyAccount/MyAccount";
 import { Womens } from "../Components/ProductCategory/Womens";
 import { Electronics } from "../Components/ProductCategory/Electronics";
 import { ProductsDetails } from "../Pages/ProductsDetails/ProductsDetails";
+import { PrivateRoute } from "../HOC/PrivateRoute";
+import { Box } from "@chakra-ui/react";
 
 export const AllRoutes = () => {
   return (
-    <>
+    <Box mt={["70","70","121","121"]}>
+    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mens" element={<Mens />} />
         <Route path="/kids" element={<Kids />} />
         <Route path="/team" element={<Team />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/womens" element={<Womens />} />
         <Route path="/address" element={<Address />} />
-        <Route path="/wishlist" element={<WishList />} />
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute>
+              <WishList />
+            </PrivateRoute>
+          }
+        />
         <Route path="/products" element={<Products />} />
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/payment" element={<PaymentPage />} />
@@ -37,6 +54,6 @@ export const AllRoutes = () => {
         <Route path="/electronics" element={<Electronics />} />
         <Route path="/products/:id" element={<ProductsDetails />} />
       </Routes>
-    </>
+    </Box>
   );
 };
