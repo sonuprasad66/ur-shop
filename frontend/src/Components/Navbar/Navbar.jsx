@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -36,12 +36,16 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { SubNavbar } from "./SubNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../../Redux/Auth/action";
-export const Navbar = () => {
+import SearchBar from "../SearchBar";
+
+export const Navbar = ({ handleSearch }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const token = localStorage.getItem("token");
+  const [query, setQuery] = useState("");
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
@@ -50,6 +54,8 @@ export const Navbar = () => {
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
+
+  // api = "http://localhost:8080/products/search?q=women";
 
   const closeButton = () => {
     onclose();
@@ -67,6 +73,7 @@ export const Navbar = () => {
           justifyContent={"space-around"}
           w={["100%", "100%", "90%"]}
           m="auto"
+          gap={5}
         >
           <Flex alignItems={"center"} justifyContent={"space-around"} gap={5}>
             <Flex
@@ -89,22 +96,10 @@ export const Navbar = () => {
               <Heading size={["md", "md", "md", "xl"]}>UR SHOP</Heading>
             </Link>
           </Flex>
-          <Flex
-            w={["0%", "30%", "40%", "50%"]}
-            visibility={["hidden", "visible", "visible", "visible"]}
-          >
-            <InputGroup size="md">
-              <Input
-                border={"2px solid white"}
-                pr="4.5rem"
-                type={"text"}
-                placeholder="Search"
-              />
-              <InputRightElement width="4.5rem">
-                <Search2Icon cursor={"pointer"} />
-              </InputRightElement>
-            </InputGroup>
-          </Flex>
+          {/* ######### search box ###############  */}
+          <Box w={["30%", "40%"]}>
+            <SearchBar onChange={(e) => handleSearch(e.target.value)} />
+          </Box>
           <Flex
             alignItems={"center"}
             justifyContent={"space-between"}

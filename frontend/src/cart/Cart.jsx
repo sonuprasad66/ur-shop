@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCartData } from "../Redux/Cart/cart.action";
 import CartCard from "./CartCard";
 import CartDetails from "./CartDetails";
+import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
   const data = useSelector((store) => store.cart.data);
@@ -16,9 +17,10 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getCartData());
   }, []);
+  console.log(data);
 
   if (data.length === 0) {
-    return <Heading>Data loading</Heading>;
+    return <EmptyCart />;
   }
 
   return (

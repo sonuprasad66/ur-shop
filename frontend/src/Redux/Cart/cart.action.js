@@ -48,7 +48,8 @@ export const deleteCartData = (id) => async (dispatch) => {
     const res = await axios.delete(`${CART_API}/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    dispatch({ type: DELETE_CART_SUCCESS, payload: res });
+    dispatch({ type: DELETE_CART_SUCCESS, payload: res.data });
+    console.log(res.data,"dsdfsdf")
     dispatch(getCartData());
     return res;
   } catch (er) {

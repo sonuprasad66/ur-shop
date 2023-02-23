@@ -53,7 +53,7 @@ const addToCart = async (req, res) => {
 const deleteCartProduct = async (req, res) => {
   const id = req.params.id;
   try {
-    let deletedData = await Cart.findByIdAndDelete(id);
+    let deletedData = await Cart.findByIdAndDelete(id).populate("product");
     res.status(200).json({
       msg: "Product deleted successfull from the cart",
       data: deletedData,
@@ -89,6 +89,8 @@ const updateCartProduct = async (req, res) => {
     res.status(500).json({ msg: er.message });
   }
 };
+
+
 
 module.exports = {
   getCartData,

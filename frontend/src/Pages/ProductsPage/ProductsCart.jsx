@@ -26,6 +26,7 @@ export const ProductsCart = ({ products }) => {
   const token = localStorage.getItem("token");
   const toast = useToast();
 
+
   // const isLoading = useSelector((state) => state.cart.loading);
 
   const handleDetails = (id) => {
