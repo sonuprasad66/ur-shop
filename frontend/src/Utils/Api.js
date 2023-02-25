@@ -2,6 +2,7 @@ export const PORT = "https://ur-shop.onrender.com";
 export const CART_API = `${PORT}/cart`;
 export const USER_LOGIN = `${PORT}/login`;
 export const USER_SIGNUP = `${PORT}/signup`;
+export const SEARCH_DATA = `${PORT}/products`;
 export const USER_PROFILE = `${PORT}/profile`;
 export const WISHLIST_DATA = `${PORT}/wishlist`;
 export const ADD_NEW_ADDRESS = `${PORT}/address`;

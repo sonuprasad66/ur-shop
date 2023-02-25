@@ -31,7 +31,7 @@ productsRouter.get("/getAllProductsSortByPrice", getAllDataSortByPrice);
 productsRouter.get("/getAllProductsSortByDiscount", getAllDataSortByDiscount);
 productsRouter.get("/getAllProductsSortByRating", getAllDataSortByRating);
 
-// ############### Search api #################
+// ------------------------ Search api ------------------------
 
 productsRouter.get("/products/search", searchProductByName);
 

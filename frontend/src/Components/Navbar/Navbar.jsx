@@ -37,11 +37,9 @@ import { SubNavbar } from "./SubNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../../Redux/Auth/action";
 import SearchBar from "../SearchBar";
-
-export const Navbar = ({ handleSearch }) => {
 import { getCartData } from "../../Redux/Cart/cart.action";
 import { getWishListData } from "../../Redux/WaitList/action";
-export const Navbar = () => {
+export const Navbar = ({ handleSearch }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();

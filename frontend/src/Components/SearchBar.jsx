@@ -17,9 +17,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getProductsDetails } from "../Redux/Products/action";
+import { SEARCH_DATA } from "../Utils/Api";
 
 const getData = async (query) => {
-  let res = await axios.get(`http://localhost:8080/products/search?q=${query}`);
+  let res = await axios.get(`${SEARCH_DATA}/search?q=${query}`);
   return res.data;
 };
 
