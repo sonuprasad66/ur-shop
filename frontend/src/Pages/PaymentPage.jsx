@@ -32,6 +32,7 @@ import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { GooglePayBtn } from "../Components/GooglePayBtn";
 import logo from "../../public/logo.jpg";
+import { useSelector } from "react-redux";
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -99,6 +100,10 @@ export const PaymentPage = () => {
     }, 1000);
     return () => clearTimeout(timer);
   };
+  const currentUser = useSelector((state) => state.AuthReducer.currentUser);
+  const totalSum = useSelector((store) => store.cart.totalSum);
+
+  // console.log(totalSum);
 
   async function displayRazorpay() {
     const res = await loadScript(
@@ -111,21 +116,27 @@ export const PaymentPage = () => {
     }
 
     const options = {
-      key: "rzp_test_MycFElKbWAkW7X",
+      key: "rzp_test_jBBhchWsQ7daLQ",
       currency: "INR",
-      amount: 3000,
+      amount: totalSum * 100,
       // order_id: data.id,
       name: "UR SHOP",
       description: "Is",
       image: logo,
       handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        // alert(response.razorpay_payment_id);
+        toast({
+          title: `Your payment ID ${response.razorpay_payment_id}`,
+          status: "success",
+          position: "top",
+          duration: 3000,
+        });
+        navigate("/");
       },
       prefill: {
-        email: "sdfdsjfh2@ndsfdf.com",
-        phone_number: "9899999999",
+        name: currentUser.name,
+        email: currentUser.email,
+        contact: currentUser.mobile_number,
       },
     };
     const paymentObject = new window.Razorpay(options);
@@ -221,9 +232,14 @@ export const PaymentPage = () => {
           <Box w={"60%"} h="-moz-max-content">
             <TabPanels>
               <TabPanel>
-                <Text fontSize={"15"} fontWeight={"bold"}>
-                  Pay on delivery
-                </Text>
+                <Flex gap={"130px"} alignItems={"center"}>
+                  <Text fontSize={"15"} fontWeight={"bold"}>
+                    Pay on delivery
+                  </Text>
+                  <Text fontSize={"15"} fontWeight={"bold"} color={"blue"}>
+                    Total Amount : {totalSum}
+                  </Text>
+                </Flex>
                 <Flex alignItems={"center"} gap="10">
                   <Flex
                     mt={2}
@@ -296,7 +312,7 @@ export const PaymentPage = () => {
                 </Flex>
               </TabPanel>
               <TabPanel>
-                <p>three!</p>
+                <p>Razorpay is Loading...</p>
               </TabPanel>
             </TabPanels>
           </Box>

@@ -34,11 +34,29 @@ const getAllProductsDetails = async (req, res) => {
 const getAllFilterProducts = async (req, res) => {
   const { brand, category, price } = req.query;
   let data;
-
-  if (brand && category) {
+  if (brand && category && price) {
+    let new_price = Number(price[price.length - 1]);
     data = await ProductsModel.find({
       Brand: { $in: [...brand] },
       category: { $in: [...category] },
+      Price: { $lte: new_price },
+    });
+  } else if (brand && category) {
+    data = await ProductsModel.find({
+      Brand: { $in: [...brand] },
+      category: { $in: [...category] },
+    });
+  } else if (brand && price) {
+    let new_price = Number(price[price.length - 1]);
+    data = await ProductsModel.find({
+      Brand: { $in: [...brand] },
+      Price: { $lte: new_price },
+    });
+  } else if (category && price) {
+    let new_price = Number(price[price.length - 1]);
+    data = await ProductsModel.find({
+      category: { $in: [...category] },
+      Price: { $lte: new_price },
     });
   } else if (brand) {
     data = await ProductsModel.find({
@@ -49,9 +67,8 @@ const getAllFilterProducts = async (req, res) => {
       category: { $in: [...category] },
     });
   } else if (price) {
-    let new_price = Number(price[0]);
+    let new_price = Number(price[price.length - 1]);
     data = await ProductsModel.find({ Price: { $lte: new_price } });
-    // data = await ProductsModel.find();
   } else {
     data = await ProductsModel.find();
   }

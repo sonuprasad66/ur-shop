@@ -11,10 +11,12 @@ import {
   UPDATE_CART_ERROR,
   UPDATE_CART_LOADING,
   UPDATE_CART_SUCCESS,
+  TOTAL_SUM_SUCCESS,
 } from "./cart.type";
 
 const initialState = {
   data: [],
+  totalSum: 0,
   loading: false,
   error: false,
 };
@@ -91,6 +93,13 @@ export const cartReducer = (state = initialState, { type, payload }) => {
         error: false,
         data: payload,
       };
+
+    case TOTAL_SUM_SUCCESS:
+      return {
+        ...state,
+        totalSum: payload,
+      };
+
     default:
       return {
         ...state,

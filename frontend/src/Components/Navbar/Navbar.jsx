@@ -37,7 +37,8 @@ import { SubNavbar } from "./SubNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile } from "../../Redux/Auth/action";
 import SearchBar from "../SearchBar";
-
+import { getCartData } from "../../Redux/Cart/cart.action";
+import { getWishListData } from "../../Redux/WaitList/action";
 export const Navbar = ({ handleSearch }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,7 +52,14 @@ export const Navbar = ({ handleSearch }) => {
     navigate("/");
   };
   const currentUser = useSelector((state) => state.AuthReducer.currentUser);
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+
+  const cartData = useSelector((store) => store.cart.data);
+  const wishlistData = useSelector((store) => store.wishlist.data);
+
   useEffect(() => {
+    dispatch(getWishListData());
+    dispatch(getCartData());
     dispatch(getProfile());
   }, [dispatch]);
 
@@ -60,9 +68,18 @@ export const Navbar = ({ handleSearch }) => {
   const closeButton = () => {
     onclose();
   };
+
+  const handleMyAccount = () => {
+    alert("Your Account Details are comming soon!");
+  };
+
   return (
     <>
       <Box
+        top={0}
+        w="100%"
+        position="fixed"
+        zIndex={500}
         h={"70px"}
         bg={colorMode === "light" ? "#14244B" : "#14244B"}
         color={"white"}
@@ -113,7 +130,9 @@ export const Navbar = ({ handleSearch }) => {
                     <Avatar
                       size={"sm"}
                       src={
-                        "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        currentUser.profile_pic
+                          ? `${currentUser.profile_pic}`
+                          : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                       }
                     />
                     <Text
@@ -142,11 +161,19 @@ export const Navbar = ({ handleSearch }) => {
                     visibility={["visible", "hidden", "hidden", "hidden"]}
                   ></MenuGroup>
                   <MenuItem>
-                    <HiOutlineUser size={25} /> <Text ml={2}> My Account</Text>
+                    <HiOutlineUser size={25} />
+
+                    <Text ml={2} onClick={handleMyAccount}>
+                      {" "}
+                      My Account
+                    </Text>
                   </MenuItem>
                   <MenuItem>
                     <BsHandbag size={25} />
-                    <Text ml={2}> My Orders</Text>
+                    <Link to={"/cart"}>
+                      {" "}
+                      <Text ml={2}> My Orders</Text>
+                    </Link>
                   </MenuItem>
 
                   <MenuItem>
@@ -158,12 +185,56 @@ export const Navbar = ({ handleSearch }) => {
                 </MenuList>
               )}
             </Menu>
-            <Link to="/wishlist">
-              <FiHeart size={25} cursor="pointer" />
-            </Link>
-            <Link to="/cart">
-              <HiOutlineShoppingCart size={25} cursor="pointer" />
-            </Link>
+
+            <Box position={"relative"}>
+              <Link to="/wishlist">
+                <FiHeart size={25} cursor="pointer" />
+              </Link>
+              {isAuth || token ? (
+                <Flex
+                  height="20px"
+                  width="15px"
+                  borderRadius="25px"
+                  padding="5px"
+                  backgroundColor="red"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  position="absolute"
+                  top="-10px"
+                  right="-8px"
+                >
+                  {wishlistData.length}
+                </Flex>
+              ) : (
+                ""
+              )}
+            </Box>
+
+            <Box position={"relative"}>
+              <Link to="/cart">
+                <HiOutlineShoppingCart size={25} cursor="pointer" />
+              </Link>
+              {isAuth || token ? (
+                <Flex
+                  height="20px"
+                  width="15px"
+                  borderRadius="25px"
+                  padding="5px"
+                  backgroundColor="red"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  position="absolute"
+                  top="-10px"
+                  right="-8px"
+                >
+                  {cartData.length}
+                </Flex>
+              ) : (
+                ""
+              )}
+            </Box>
 
             <Box>
               {colorMode === "light" ? (

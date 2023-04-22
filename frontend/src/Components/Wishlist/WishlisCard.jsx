@@ -1,5 +1,4 @@
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import axios from "axios";
 import React, { useState } from "react";
 import { ImStarEmpty } from "react-icons/im";
 
@@ -14,8 +13,6 @@ const WishlisCard = ({
   deleteWishlist,
 }) => {
   const [update, setUpdate] = useState(false);
-
- 
 
   return (
     <Box

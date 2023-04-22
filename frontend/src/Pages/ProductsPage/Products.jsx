@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Flex,
+  Image,
   SimpleGrid,
   Text,
   useColorMode,
@@ -11,7 +12,7 @@ import "./Products.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
-
+import loader from "../../assets/abg.gif";
 import { getFilterProducts, getProducts } from "../../Redux/Products/action";
 import { Filter } from "./Filter";
 import { Pagination } from "./Pagination";
@@ -22,6 +23,7 @@ export const Products = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openSort, setOpenSort] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
+  const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -30,6 +32,14 @@ export const Products = () => {
   const filterProducts = useSelector(
     (state) => state.ProductsReducer.filterProducts
   );
+
+  const totalPage = Math.ceil(filterProducts.length / 8);
+
+  let limit = 8;
+  let start = (page - 1) * limit;
+  let end = start + limit;
+
+  let pageData = filterProducts.slice(start, end);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -42,12 +52,13 @@ export const Products = () => {
           brand: searchParams.getAll("brand"),
           category: searchParams.getAll("category"),
           price: searchParams.getAll("price"),
+          page: page,
         },
       };
       // console.log(getProductsParams);
       dispatch(getFilterProducts(getProductsParams));
     }
-  }, [location.search]);
+  }, [location.search, page]);
 
   const handleSidebar = () => {
     setOpenMenu(true);
@@ -55,6 +66,21 @@ export const Products = () => {
   const handleOpenSort = () => {
     setOpenSort(true);
   };
+
+  if (products.length === 0 && filterProducts.length === 0) {
+    return (
+      <>
+        <Flex
+          w={"100%"}
+          h={"80vh"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <Image src={loader} alt="loader" />
+        </Flex>
+      </>
+    );
+  }
 
   return (
     <>
@@ -70,10 +96,20 @@ export const Products = () => {
           <Filter />
         </Box>
         <Box className={"open_mobile"}>
-          <Button bg={"#14244b"} color={"white"} onClick={handleSidebar}>
+          <Button
+            bg={"#14244b"}
+            _hover={"none"}
+            color={"white"}
+            onClick={handleSidebar}
+          >
             Open Filter
           </Button>
-          <Button bg={"#14244b"} color={"white"} onClick={handleOpenSort}>
+          <Button
+            bg={"#14244b"}
+            _hover={"none"}
+            color={"white"}
+            onClick={handleOpenSort}
+          >
             Open Sort
           </Button>
         </Box>
@@ -92,32 +128,38 @@ export const Products = () => {
             <Sidebar />
           </Box>
           <Box w={["100%", "100%", "100%", "85%"]} p={4}>
-            {filterProducts.length > 0 ? (
+            {pageData.length > 0 ? (
               <>
                 <SimpleGrid columns={[1, 2, 3, 4]} spacing="30px">
-                  {filterProducts &&
-                    filterProducts.map((item) => {
+                  {pageData &&
+                    pageData.map((item) => {
                       return <ProductsCart key={item._id} products={item} />;
                     })}
                 </SimpleGrid>
               </>
             ) : (
               <>
-                <div>
-                  <div>
-                    <img
-                      src="https://media.tenor.com/W6YUgyV84o0AAAAM/cry-crying.gif"
-                      alt="gif"
-                    />
-                    <h2>No Products Available</h2>
-                  </div>
-                </div>
+                <Flex
+                  flexDirection={"column"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                >
+                  <Image
+                    src="https://media.tenor.com/W6YUgyV84o0AAAAM/cry-crying.gif"
+                    alt="gif"
+                  />
+                  <Text>No Products Available</Text>
+                </Flex>
               </>
             )}
           </Box>
         </Flex>
-        <Box w={"100%"} p={5} border={"1px solid red"} mt={5}>
-          <Pagination />
+        <Box w={"100%"} p={5} mt={5}>
+          <Pagination
+            page={page}
+            total={Math.ceil(filterProducts.length / 8)}
+            setPage={setPage}
+          />
         </Box>
       </Box>
     </>

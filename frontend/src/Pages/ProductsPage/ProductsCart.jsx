@@ -1,14 +1,13 @@
-
-
-import React, { useEffect, useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Box, Flex, Heading, Image, Text, useToast } from "@chakra-ui/react";
-import { ImStarEmpty } from "react-icons/im";
+import React, { useEffect } from "react";
 import { FiHeart } from "react-icons/fi";
-import { getProductsDetails } from "../../Redux/Products/action";
+import loader from "../../assets/abg.gif";
+import { AiFillHeart } from "react-icons/ai";
+import { ImStarEmpty } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { addCartData } from "../../Redux/Cart/cart.action";
+import { getProductsDetails } from "../../Redux/Products/action";
+import { Box, Flex, Heading, Image, Text, useToast } from "@chakra-ui/react";
 import {
   addWishListData,
   deleteWishListData,
@@ -54,7 +53,7 @@ export const ProductsCart = ({ products }) => {
         });
       } else {
         toast({
-          title: "Product Added Failed",
+          title: "You need to login first",
           status: "error",
           duration: 2000,
           isClosable: true,
@@ -67,7 +66,6 @@ export const ProductsCart = ({ products }) => {
   const addWishList = async (id) => {
     console.log(id);
     dispatch(addWishListData({ product: id }));
-  
   };
 
   const deleteWishlist = async (id) => {
@@ -93,7 +91,7 @@ export const ProductsCart = ({ products }) => {
 
         <Flex justifyContent={"space-between"} alignItems={"center"} mt={2}>
           <Heading size={"20px"}>{products.Brand}</Heading>
-          {data?.filter((el) => el.product._id === products._id).length==1 ? (
+          {data?.filter((el) => el.product._id === products._id).length == 1 ? (
             <AiFillHeart
               fontSize={"20px"}
               cursor={"pointer"}
