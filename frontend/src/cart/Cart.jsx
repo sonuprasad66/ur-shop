@@ -10,9 +10,9 @@ const Cart = () => {
   const data = useSelector((store) => store.cart.data);
   const dispatch = useDispatch();
 
-  let total = data.reduce((acc, el) => acc + el.qty * el.product.Price, 0);
+  let total = data?.reduce((acc, el) => acc + el.qty * el.product.Price, 0);
 
-  let totalMrp = data.reduce((acc, el) => acc + el.qty * el.product.MRP, 0);
+  let totalMrp = data?.reduce((acc, el) => acc + el.qty * el.product.MRP, 0);
 
   useEffect(() => {
     dispatch(getCartData());
