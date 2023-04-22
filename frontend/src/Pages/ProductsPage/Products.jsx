@@ -75,6 +75,7 @@ export const Products = () => {
           h={"80vh"}
           justifyContent={"center"}
           alignItems={"center"}
+         
         >
           <Image src={loader} alt="loader" />
         </Flex>
@@ -84,7 +85,7 @@ export const Products = () => {
 
   return (
     <>
-      <Box p={"20px"}>
+      <Box p={"20px"} mt={"160px"}>
         <Box
           w={"100%"}
           bg={colorMode === "light" ? "#fff" : "#14244B"}

@@ -108,7 +108,6 @@ const searchProductByName = async (req, res) => {
     const AllProducts = await ProductsModel.find({
       Product_Title: { $regex: keyword, $options: "i" },
     });
-    console.log(AllProducts);
     return res.status(200).send(AllProducts);
   } catch (er) {
     return res.status(403).send(er.message);

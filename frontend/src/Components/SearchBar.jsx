@@ -46,7 +46,6 @@ const SearchBar = () => {
     navigate(`/products/${id}`);
     setShow(!show);
   };
-  console.log(show);
   return (
     <Box width="100%">
       <Box pos={"relative"}>

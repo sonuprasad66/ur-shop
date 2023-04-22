@@ -80,12 +80,13 @@ export const Navbar = ({ handleSearch }) => {
         w="100%"
         position="fixed"
         zIndex={500}
-        h={"70px"}
+        h={"100px"}
         bg={colorMode === "light" ? "#14244B" : "#14244B"}
         color={"white"}
       >
-        <Flex
+        <Box
           h={"100%"}
+          display={"flex"}
           alignItems={"center"}
           justifyContent={"space-around"}
           w={["100%", "100%", "90%"]}
@@ -94,7 +95,6 @@ export const Navbar = ({ handleSearch }) => {
         >
           <Flex alignItems={"center"} justifyContent={"space-around"} gap={5}>
             <Flex
-              // pl={["2", "0", "0"]}
               visibility={["visible", "visible", "visible", "hidden"]}
               w="-webkit-fit-content"
               onClick={onOpen}
@@ -117,10 +117,11 @@ export const Navbar = ({ handleSearch }) => {
           <Box w={["30%", "40%"]}>
             <SearchBar onChange={(e) => handleSearch(e.target.value)} />
           </Box>
-          <Flex
+          <Box
             alignItems={"center"}
             justifyContent={"space-between"}
             gap={["20px", "30px"]}
+            display="flex"
           >
             <Menu>
               {token ? (
@@ -128,6 +129,7 @@ export const Navbar = ({ handleSearch }) => {
                   {" "}
                   <Flex alignItems={"center"} color="white" gap={2}>
                     <Avatar
+                      display={{ base: "none", md: "flex" }}
                       size={"sm"}
                       src={
                         currentUser.profile_pic
@@ -251,8 +253,8 @@ export const Navbar = ({ handleSearch }) => {
                 />
               )}
             </Box>
-          </Flex>
-        </Flex>
+          </Box>
+        </Box>
       </Box>
 
       <Box

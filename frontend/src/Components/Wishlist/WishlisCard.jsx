@@ -4,6 +4,7 @@ import { ImStarEmpty } from "react-icons/im";
 
 const WishlisCard = ({
   id,
+  pId,
   img,
   title,
   brand,
@@ -11,9 +12,8 @@ const WishlisCard = ({
   rating,
   mrp,
   deleteWishlist,
+  handleDetails,
 }) => {
-  const [update, setUpdate] = useState(false);
-
   return (
     <Box
       h={"400px"}
@@ -27,6 +27,7 @@ const WishlisCard = ({
         h={"60%"}
         borderRadius={2}
         cursor={"pointer"}
+        onClick={() => handleDetails(pId)}
       />
       <Flex justifyContent={"space-between"} alignItems={"center"} mt={2}>
         <Heading size={"20px"}>{brand}</Heading>
