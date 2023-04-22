@@ -15,12 +15,24 @@ const Cart = () => {
 
   let totalMrp = data?.reduce((acc, el) => acc + el.qty * el.product.MRP, 0);
 
-  const loading = useSelector((store) => store.cart.data);
+  const { loading } = useSelector((store) => store.cart);
 
   useEffect(() => {
     dispatch(getCartData());
   }, []);
-  console.log(data);
+
+  if (loading) {
+    return (
+      <Flex
+        w={"100%"}
+        h={"80vh"}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <Image src={loader} alt="loader" />
+      </Flex>
+    );
+  }
 
   if (data.length === 0) {
     return <EmptyCart />;
@@ -39,7 +51,7 @@ const Cart = () => {
   }
 
   return (
-    <Box w={"90%"} m="auto">
+    <Box w={"90%"} m="auto" mt={"160px"}>
       <Box display={["block", "flex"]} justify={"space-between"}>
         <Box>
           {data.length > 0 ? (

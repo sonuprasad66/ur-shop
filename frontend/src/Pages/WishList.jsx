@@ -1,15 +1,17 @@
-import { Box, Flex, Image, SimpleGrid, Text } from "@chakra-ui/react";
-import axios from "axios";
+import { Box, Center, Flex, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import WishlisCard from "../Components/Wishlist/WishlisCard";
 import { deleteWishListData, getWishListData } from "../Redux/WaitList/action";
-const token = localStorage.getItem("token");
+import { getProductsDetails } from "../Redux/Products/action";
+import { useNavigate } from "react-router-dom";
+import loader from "../assets/abg.gif";
 
 const WishList = () => {
   const dispatch = useDispatch();
 
-  const { data } = useSelector((store) => store.wishlist);
+  const { data, loading } = useSelector((store) => store.wishlist);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getWishListData());
@@ -19,14 +21,33 @@ const WishList = () => {
     dispatch(deleteWishListData(id));
   };
 
+  const handleDetails = (id) => {
+    console.log(id);
+    dispatch(getProductsDetails(id));
+    navigate(`/products/${id}`);
+  };
+
+  if (loading) {
+    return (
+      <Flex
+        w={"100%"}
+        h={"80vh"}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <Image src={loader} alt="loader" />
+      </Flex>
+    );
+  }
   return (
-    <Box>
-      <SimpleGrid columns={5} spacing={6} w="90%" m={"auto"} p={5}>
+    <Box mt={"160px"}>
+      <SimpleGrid columns={[1, 2, 3, 4]} spacing={6} w="90%" m={"auto"} p={5}>
         {data.length > 0 ? (
           data?.map((el) => (
             <WishlisCard
               key={el._id}
               id={el._id}
+              pId={el.product._id}
               img={el.product.Image1}
               title={el.product.Product_Title}
               brand={el.product.Brand}
@@ -35,22 +56,27 @@ const WishList = () => {
               mrp={el.product.MRP}
               category={el.product.category}
               deleteWishlist={deleteWishlist}
+              handleDetails={handleDetails}
             />
           ))
         ) : (
           <>
             <Flex
-              w={"100%"}
+              w={"90vw"}
               h={"80vh"}
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
             >
-              <Image
-                src="https://media.tenor.com/W6YUgyV84o0AAAAM/cry-crying.gif"
-                alt="gif"
-              />
-              <Text>No Products Available</Text>
+              <Center>
+                <Box>
+                  <Image
+                    src="https://media.tenor.com/W6YUgyV84o0AAAAM/cry-crying.gif"
+                    alt="gif"
+                  />
+                  <Text>No Products Available</Text>
+                </Box>
+              </Center>
             </Flex>
           </>
         )}

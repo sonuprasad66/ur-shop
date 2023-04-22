@@ -27,7 +27,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Box>
+    <Box mt={"160px"}>
       <HomeTopCarousal />
       <HomeBottomCarousal />
       <Trending />

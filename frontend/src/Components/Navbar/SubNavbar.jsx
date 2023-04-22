@@ -6,7 +6,7 @@ export const SubNavbar = () => {
   return (
     <Box
       w="100%"
-      mt={"70px"}
+      mt={"100px"}
       position="fixed"
       zIndex={99}
       color={"white"}

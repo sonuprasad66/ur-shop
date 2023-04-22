@@ -22,21 +22,19 @@ const initialState = {
 };
 
 export const cartReducer = (state = initialState, { type, payload }) => {
-  console.log(state.data.length, "reducer");
   switch (type) {
     case GET_CART_LOADING:
       return {
         ...state,
         loading: true,
         error: false,
-        data: state.data.length === 0 ? [] : state.data,
+        data: [],
       };
     case GET_CART_ERROR:
       return {
         ...state,
         loading: false,
         error: true,
-        data: [state.data],
       };
     case GET_CART_SUCCESS:
       return {
@@ -46,13 +44,12 @@ export const cartReducer = (state = initialState, { type, payload }) => {
         data: payload,
       };
     case POST_CART_LOADING:
-      return { ...state, loading: true, error: false, data: [state.data] };
+      return { ...state, loading: true, error: false };
     case POST_CART_ERROR:
       return {
         ...state,
         loading: false,
         error: true,
-        data: [state.data],
       };
     case POST_CART_SUCCESS:
       return {
@@ -62,36 +59,32 @@ export const cartReducer = (state = initialState, { type, payload }) => {
         data: payload,
       };
     case DELETE_CART_LOADING:
-      return { ...state, loading: true, error: false, data: [state.data] };
+      return { ...state, loading: true, error: false };
     case DELETE_CART_ERROR:
       return {
         ...state,
         loading: false,
         error: true,
-        data: [state.data],
       };
     case DELETE_CART_SUCCESS:
       return {
         ...state,
         loading: false,
         error: false,
-        data: payload,
       };
     case UPDATE_CART_LOADING:
-      return { ...state, loading: true, error: false, data: [...state.data] };
+      return { ...state, loading: true, error: false, data: state.data };
     case UPDATE_CART_ERROR:
       return {
         ...state,
         loading: false,
         error: true,
-        data: [state.data],
       };
     case UPDATE_CART_SUCCESS:
       return {
         ...state,
         loading: false,
         error: false,
-        data: payload,
       };
 
     case TOTAL_SUM_SUCCESS:
