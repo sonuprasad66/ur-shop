@@ -20,7 +20,9 @@ import {
 import { Link as BrowseLink, useNavigate } from "react-router-dom";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from "../../Redux/Auth/action";
+import { getProfile, userLogin } from "../../Redux/Auth/action";
+import { getWishListData } from "../../Redux/WaitList/action";
+import { getCartData } from "../../Redux/Cart/cart.action";
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -52,7 +54,12 @@ export const Login = () => {
           isClosable: true,
           position: "top",
         });
-        navigate("/");
+        dispatch(getWishListData());
+        dispatch(getCartData());
+        dispatch(getProfile());
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
       } else {
         toast({
           title: res.payload.message,
