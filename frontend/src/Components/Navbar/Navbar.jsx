@@ -48,8 +48,8 @@ export const Navbar = ({ handleSearch }) => {
   const [update, setUpdate] = useState(false);
 
   const handleLogout = () => {
-    setUpdate(!update);
     localStorage.removeItem("token");
+    setUpdate(!update);
     navigate("/login");
   };
   const currentUser = useSelector((state) => state.AuthReducer.currentUser);

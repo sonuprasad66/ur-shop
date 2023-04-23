@@ -34,7 +34,7 @@ export const addWishListData = (data) => async (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({ type: POST_WISHLIST_SUCCESS, payload: res.data });
-    dispatch(getWishListData());
+    dispatch(getWishListData(token));
     return res.data;
   } catch (er) {
     return dispatch({ type: POST_WISHLIST_ERROR });
@@ -48,7 +48,7 @@ export const deleteWishListData = (id) => async (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({ type: DELETE_WISHLIST_SUCCESS, payload: res.data });
-    dispatch(getWishListData());
+    dispatch(getWishListData(token));
     return res.data;
   } catch (er) {
     return dispatch({ type: DELETE_WISHLIST_ERROR });

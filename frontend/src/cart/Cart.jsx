@@ -16,9 +16,10 @@ const Cart = () => {
   let totalMrp = data?.reduce((acc, el) => acc + el.qty * el.product.MRP, 0);
 
   const { loading } = useSelector((store) => store.cart);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    dispatch(getCartData());
+    dispatch(getCartData(token));
   }, []);
 
   if (loading) {
