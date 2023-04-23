@@ -41,13 +41,13 @@ export const CheckoutPage = () => {
   const data = useSelector((store) => store.cart.data);
   const currentUser = useSelector((state) => state.AuthReducer.currentUser);
   const isLoading = useSelector((state) => state.AuthReducer.isLoading);
-  useEffect(() => {
-    dispatch(getProfile());
-  }, [dispatch]);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    dispatch(getCartData());
-  }, []);
+    dispatch(getProfile(token));
+    dispatch(getCartData(token));
+  }, [dispatch]);
+
   let address;
   if (currentUser.address) {
     address = `${currentUser?.address.details},${currentUser?.address.town},${currentUser?.address.city},${currentUser?.address.state}-${currentUser?.address.pincode}`;
@@ -154,7 +154,7 @@ export const CheckoutPage = () => {
                     p={2}
                     alignItems={"center"}
                     gap={10}
-                  pl={10}
+                    pl={10}
                   >
                     <Image
                       w={["35%", "35%", "22%", "22%"]}
@@ -166,7 +166,6 @@ export const CheckoutPage = () => {
                       <Text fontWeight={"bold"}>{item.product.Brand}</Text>
                       <Text>{item.product.Product_Title}</Text>
                       <Flex mt={2} mb={2} gap={5} alignItems="center">
-                      
                         <Box
                           pl={"2"}
                           pr="2"
