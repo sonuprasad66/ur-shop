@@ -51,7 +51,6 @@ export const Navbar = ({ handleSearch }) => {
     setUpdate(!update);
     localStorage.removeItem("token");
     navigate("/login");
-    
   };
   const currentUser = useSelector((state) => state.AuthReducer.currentUser);
   const isAuth = useSelector((state) => state.AuthReducer.isAuth);
@@ -60,9 +59,9 @@ export const Navbar = ({ handleSearch }) => {
   const wishlistData = useSelector((store) => store.wishlist.data);
 
   useEffect(() => {
-    dispatch(getWishListData());
-    dispatch(getCartData());
-    dispatch(getProfile());
+    dispatch(getWishListData(token));
+    dispatch(getCartData(token));
+    dispatch(getProfile(token));
   }, [dispatch, update]);
 
   // api = "http://localhost:8080/products/search?q=women";

@@ -15,7 +15,7 @@ import { WISHLIST_DATA } from "../.././Utils/Api";
 
 const token = localStorage.getItem("token");
 
-export const getWishListData = () => async (dispatch) => {
+export const getWishListData = (token) => async (dispatch) => {
   dispatch({ type: GET_WISHLIST_LOADING });
   try {
     const res = await axios.get(WISHLIST_DATA, {

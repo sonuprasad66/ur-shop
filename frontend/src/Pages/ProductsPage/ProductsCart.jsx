@@ -17,14 +17,14 @@ import {
 export const ProductsCart = ({ products }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   const { data } = useSelector((store) => store.wishlist);
   useEffect(() => {
-    dispatch(getWishListData());
+    dispatch(getWishListData(token));
   }, []);
-  const token = localStorage.getItem("token");
-  const toast = useToast();
 
+  const toast = useToast();
 
   // const isLoading = useSelector((state) => state.cart.loading);
 
@@ -34,8 +34,8 @@ export const ProductsCart = ({ products }) => {
   };
 
   const handleCart = (id) => {
-    dispatch(addCartData({ product: id, qty: 1 })).then((res) => {
-      console.log(res)
+    dispatch(addCartData(token,{ product: id, qty: 1 })).then((res) => {
+      console.log(res);
       if (res.status === "success") {
         toast({
           title: res.msg,
