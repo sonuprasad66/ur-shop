@@ -51,14 +51,12 @@ export const userLogin = (payload) => (dispatch) => {
     });
 };
 
-export const getProfile = (payload) => (dispatch) => {
-  // dispatch({ type: types.USER_LOGIN_REQUEST });
-  return axios
+export const getProfile = (token) => async (dispatch) => {
+  return await axios
     .get(USER_PROFILE, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((res) => {
-      // console.log(res.data);
       return dispatch({ type: types.USER_PROFILE_SUCCESS, payload: res.data });
     })
     .catch((err) => console.log(err));

@@ -32,7 +32,7 @@ export const Login = () => {
   const toast = useToast();
   const isLoading = useSelector((state) => state.AuthReducer.isLoading);
 
-  console.log(isLoading);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,9 +54,9 @@ export const Login = () => {
           isClosable: true,
           position: "top",
         });
-        dispatch(getWishListData());
-        dispatch(getCartData());
-        dispatch(getProfile());
+        dispatch(getWishListData(res.payload.token));
+        dispatch(getCartData(res.payload.token));
+        dispatch(getProfile(res.payload.token));
         setTimeout(() => {
           navigate("/");
         }, 1500);

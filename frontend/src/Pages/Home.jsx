@@ -10,22 +10,8 @@ import Kid from "../Home/Kids";
 import Men from "../Home/Men";
 import Trending from "../Home/Trending";
 import Women from "../Home/Women";
-import { getProfile } from "../Redux/Auth/action";
-import { getCartData } from "../Redux/Cart/cart.action";
-import { getWishListData } from "../Redux/WaitList/action";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getWishListData());
-    dispatch(getCartData());
-  }, []);
-
-  useEffect(() => {
-    dispatch(getProfile());
-  }, []);
-
   return (
     <Box mt={"160px"}>
       <HomeTopCarousal />

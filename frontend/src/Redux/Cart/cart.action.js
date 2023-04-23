@@ -16,7 +16,7 @@ import {
 const token = localStorage.getItem("token");
 import { CART_API } from "../.././Utils/Api";
 
-export const getCartData = () => async (dispatch) => {
+export const getCartData = (token) => async (dispatch) => {
   dispatch({ type: GET_CART_LOADING });
   try {
     const res = await axios.get(CART_API, {
@@ -28,7 +28,7 @@ export const getCartData = () => async (dispatch) => {
   }
 };
 
-export const addCartData = (data) => async (dispatch) => {
+export const addCartData = (token,data) => async (dispatch) => {
   dispatch({ type: POST_CART_LOADING });
   try {
     const res = await axios.post(CART_API, data, {
