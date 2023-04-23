@@ -30,17 +30,36 @@ export const ProductsDetails = () => {
 
   const product = useSelector((state) => state.ProductsReducer.productsDetails);
   const isLoading = useSelector((state) => state.cart.loading);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     dispatch(getProductsDetails(id));
   }, []);
 
   const handleWishlist = (id) => {
-    dispatch(addWishListData({ product: id }));
+    dispatch(addWishListData({ product: id })).then((res) => {
+      if (res.product) {
+        toast({
+          title: "Product added to wishlisht",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      } else {
+        toast({
+          title: res,
+          status: "info",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+    });
   };
 
   const handleCart = (id) => {
-    dispatch(addCartData({ product: id, qty: 1 })).then((res) => {
+    dispatch(addCartData(token, { product: id, qty: 1 })).then((res) => {
       if (res.status === "success") {
         toast({
           title: res.msg,

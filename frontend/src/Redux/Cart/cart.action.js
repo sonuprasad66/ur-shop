@@ -28,14 +28,14 @@ export const getCartData = (token) => async (dispatch) => {
   }
 };
 
-export const addCartData = (token,data) => async (dispatch) => {
+export const addCartData = (token, data) => async (dispatch) => {
   dispatch({ type: POST_CART_LOADING });
   try {
     const res = await axios.post(CART_API, data, {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({ type: POST_CART_SUCCESS, payload: res.data });
-    dispatch(getCartData());
+    dispatch(getCartData(token));
     return res.data;
   } catch (er) {
     return dispatch({ type: POST_CART_ERROR });
@@ -49,7 +49,7 @@ export const deleteCartData = (id) => async (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({ type: DELETE_CART_SUCCESS, payload: res.data });
-    dispatch(getCartData());
+    dispatch(getCartData(token));
     return res;
   } catch (er) {
     return dispatch({ type: DELETE_CART_ERROR });
@@ -67,7 +67,7 @@ export const updateCartData = (id, data) => async (dispatch) => {
       }
     );
     dispatch({ type: UPDATE_CART_SUCCESS, payload: res });
-    dispatch(getCartData());
+    dispatch(getCartData(token));
     return res.data;
   } catch (er) {
     return dispatch({ type: UPDATE_CART_ERROR });

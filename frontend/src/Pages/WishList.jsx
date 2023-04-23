@@ -12,9 +12,10 @@ const WishList = () => {
 
   const { data, loading } = useSelector((store) => store.wishlist);
   const navigate = useNavigate();
+    const token = localStorage.getItem("token");
 
   useEffect(() => {
-    dispatch(getWishListData());
+    dispatch(getWishListData(token));
   }, []);
 
   const deleteWishlist = async (id) => {
