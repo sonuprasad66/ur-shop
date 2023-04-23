@@ -45,11 +45,13 @@ export const Navbar = ({ handleSearch }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const token = localStorage.getItem("token");
-  const [query, setQuery] = useState("");
+  const [update, setUpdate] = useState(false);
 
   const handleLogout = () => {
+    setUpdate(!update);
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/login");
+    
   };
   const currentUser = useSelector((state) => state.AuthReducer.currentUser);
   const isAuth = useSelector((state) => state.AuthReducer.isAuth);
@@ -61,7 +63,7 @@ export const Navbar = ({ handleSearch }) => {
     dispatch(getWishListData());
     dispatch(getCartData());
     dispatch(getProfile());
-  }, [dispatch]);
+  }, [dispatch, update]);
 
   // api = "http://localhost:8080/products/search?q=women";
 

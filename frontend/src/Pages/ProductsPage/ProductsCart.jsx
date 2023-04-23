@@ -35,6 +35,7 @@ export const ProductsCart = ({ products }) => {
 
   const handleCart = (id) => {
     dispatch(addCartData({ product: id, qty: 1 })).then((res) => {
+      console.log(res)
       if (res.status === "success") {
         toast({
           title: res.msg,

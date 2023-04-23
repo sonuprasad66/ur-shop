@@ -20,13 +20,10 @@ import { Box } from "@chakra-ui/react";
 
 export const AllRoutes = () => {
   return (
-    <Box mt={["70","70","121","121"]}>
-    
+    <Box mt={["70", "70", "121", "121"]}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/mens" element={<Mens />} />
-        <Route path="/kids" element={<Kids />} />
-        <Route path="/team" element={<Team />} />
+
         <Route
           path="/cart"
           element={
@@ -38,7 +35,14 @@ export const AllRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/womens" element={<Womens />} />
-        <Route path="/address" element={<Address />} />
+        <Route
+          path="/address"
+          element={
+            <PrivateRoute>
+              <Address />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/wishlist"
           element={
@@ -48,9 +52,33 @@ export const AllRoutes = () => {
           }
         />
         <Route path="/products" element={<Products />} />
-        <Route path="/myaccount" element={<MyAccount />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route
+          path="/myaccount"
+          element={
+            <PrivateRoute>
+              <MyAccount />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/payment"
+          element={
+            <PrivateRoute>
+              <PaymentPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <CheckoutPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/mens" element={<Mens />} />
+        <Route path="/kids" element={<Kids />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/electronics" element={<Electronics />} />
         <Route path="/products/:id" element={<ProductsDetails />} />
       </Routes>
